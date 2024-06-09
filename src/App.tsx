@@ -1,5 +1,7 @@
+import RoutesHandler from "./Router"
+
 function App() {
-    return <main></main>
+    return <>{<RoutesHandler />}</>
 }
 
 export default App
