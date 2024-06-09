@@ -13,6 +13,10 @@ export default {
                     slategray: "var(--slategray)",
                 },
             },
+            fontFamily: {
+                FaFont: "FaFont",
+                EnFont: "EnFont",
+            },
         },
     },
     plugins: [],

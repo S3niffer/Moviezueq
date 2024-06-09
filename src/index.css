@@ -20,11 +20,21 @@
         --slategray: #707c87;
     }
 
-    .dir-rtl {
+    .rtl {
         direction: rtl;
     }
 
-    .dir-ltr {
+    .ltr {
         direction: ltr;
+    }
+
+    @font-face {
+        font-family: "FaFont";
+        src: url(../public/Fonts/DahganRegular.ttf) format("TrueType");
+    }
+
+    @font-face {
+        font-family: "EnFont";
+        src: url(../public/Fonts/SpaceGrotesk-Regular.ttf) format("TrueType");
     }
 }
