@@ -2,7 +2,18 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                added: {
+                    schoolbus: "var(--schoolbusyellow)",
+                    white: "var(--white)",
+                    delftblue: "var(--delftblue)",
+                    oxfordblue: "var(--oxfordblue)",
+                    charcoal: "var(--charcoal)",
+                    slategray: "var(--slategray)",
+                },
+            },
+        },
     },
     plugins: [],
 }

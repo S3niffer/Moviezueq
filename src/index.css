@@ -10,4 +10,21 @@
         padding: 0;
         box-sizing: border-box;
     }
+
+    :root {
+        --schoolbusyellow: #ffdb00;
+        --white: #ffffff;
+        --delftblue: #26355d;
+        --oxfordblue: #02182b;
+        --charcoal: #2e4050;
+        --slategray: #707c87;
+    }
+
+    .dir-rtl {
+        direction: rtl;
+    }
+
+    .dir-ltr {
+        direction: ltr;
+    }
 }
