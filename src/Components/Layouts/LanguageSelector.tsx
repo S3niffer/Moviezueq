@@ -1,5 +1,5 @@
-import iranFlag from "../../../public/Pics/Flags icon/iran.png"
-import americaFlag from "../../../public/Pics/Flags icon/america.png"
+import iranFlag from "/Pics/Flags icon/iran.png"
+import americaFlag from "/Pics/Flags icon/america.png"
 const LanguageSelector = ({ className }: { className?: string }) => {
     return (
         <div className={className + " relative"}>

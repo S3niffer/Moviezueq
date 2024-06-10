@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import LogoPic from "../../public/Pics/logo.png"
+import LogoPic from "/Pics/logo.png"
 const Logo = ({ className }: { className?: string }) => {
     return (
         <Link
