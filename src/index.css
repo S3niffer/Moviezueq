@@ -18,6 +18,9 @@
         --oxfordblue: #02182b;
         --charcoal: #2e4050;
         --slategray: #707c87;
+        --navbar-height: 48px;
+        --yellow-BG: 6px;
+        --white-BG: calc(var(--yellow-BG) / 2);
     }
 
     .rtl {
@@ -30,11 +33,114 @@
 
     @font-face {
         font-family: "FaFont";
-        src: url(../public/Fonts/DahganRegular.ttf) format("TrueType");
+        src: url(/Fonts/DahganRegular.ttf) format("TrueType");
     }
 
     @font-face {
         font-family: "EnFont";
-        src: url(../public/Fonts/SpaceGrotesk-Regular.ttf) format("TrueType");
+        src: url(/Fonts/SpaceGrotesk-Regular.ttf) format("TrueType");
+    }
+
+    .entranceCard::after,
+    .entranceCard::before {
+        position: absolute;
+        display: block;
+        content: "";
+        inset: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0.25rem;
+        -webkit-border-radius: 0.25rem;
+        -moz-border-radius: 0.25rem;
+        -ms-border-radius: 0.25rem;
+        -o-border-radius: 0.25rem;
+    }
+
+    .entranceCard::after {
+        background-color: var(--schoolbusyellow);
+        z-index: -2;
+        transform: translate(var(--yellow-BG), var(--yellow-BG));
+        -webkit-transform: translate(var(--yellow-BG), var(--yellow-BG));
+        -moz-transform: translate(var(--yellow-BG), var(--yellow-BG));
+        -ms-transform: translate(var(--yellow-BG), var(--yellow-BG));
+        -o-transform: translate(var(--yellow-BG), var(--yellow-BG));
+    }
+
+    .entranceCard::before {
+        background-color: var(--white);
+        z-index: -1;
+        transform: translate(var(--white-BG), var(--white-BG));
+        -webkit-transform: translate(var(--white-BG), var(--white-BG));
+        -moz-transform: translate(var(--white-BG), var(--white-BG));
+        -ms-transform: translate(var(--white-BG), var(--white-BG));
+        -o-transform: translate(var(--white-BG), var(--white-BG));
+    }
+
+    .entranceCardContainer {
+        perspective: 1200px;
+    }
+
+    .entranceCard {
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+    }
+
+    .entranceCard.rotateCard {
+        transform-style: preserve-3d;
+        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+    }
+
+    .entranceCard-login {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+    }
+
+    .entranceCard-register {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+    }
+
+    @media screen and (min-width: 480px) {
+        :root {
+            --navbar-height: 56px;
+            --yellow-BG: 8px;
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        :root {
+            --navbar-height: 64px;
+            --yellow-BG: 10px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        :root {
+            --navbar-height: 72px;
+            --yellow-BG: 12px;
+        }
+
+        .container {
+            max-width: 1024px !important;
+        }
     }
 }
