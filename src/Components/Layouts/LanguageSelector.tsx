@@ -14,7 +14,7 @@ const LanguageSelector = ({ className }: { className?: string }) => {
                             src={iranFlag}
                             loading='lazy'
                             alt='iran emoji flag form iOS 17.4'
-                            className='w-3 sm:w-5 base:w-6 lg:w-7 aspect-square translate-y-1'
+                            className='w-3 sm:w-5 base:w-6 lg:w-7 aspect-square md:translate-y-[2px]'
                         />
                     </div>
                     <div className='sm:mt-2 flex items-center justify-between border-b border-added-charcoal hover:border-added-schoolbus mb-1 flex-row-reverse font-EnFont text-[10px] sm:text-xs sm:pb-1 md:text-sm lg:text-base 480:border-b-2 md:border-b-4'>
