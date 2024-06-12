@@ -4,7 +4,7 @@ const Logo = ({ className }: { className?: string }) => {
     return (
         <Link
             to={"/"}
-            className={className}
+            className={className + ' hover:scale-110 transition-transform duration-500'}
         >
             <img
                 src={LogoPic}
