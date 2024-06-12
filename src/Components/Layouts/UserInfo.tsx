@@ -1,0 +1,42 @@
+import YInputButton from "../YInputButton"
+
+const UserInfo = () => {
+    const { name, email } = { name: "عرفان حیدر", email: "erfanHeydar@gmail.com" }
+    return (
+        <section className='container'>
+            <h4 className='text-center'>شما با این اطلاعات وارد شده اید</h4>
+            <div className='flex items-center justify-between'>
+                <div>
+                    <div className='flex gap-2 items-center 480:gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4'>
+                        <p className='border-b border-added-schoolbus'>نام :</p> <span>{name}</span>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                        <p className='border-b border-added-schoolbus'>پست الکترونیکی :</p> <span>{email}</span>
+                    </div>
+                </div>
+                <div className='text-center relative flipUpward_container'>
+                    <div className='flipUpward_card bg-added-charcoal fill-added-white rounded hover:bg-added-schoolbus hover:fill-added-charcoal group transition-all duration-300 cursor-pointer'>
+                        <div className='flipUpward_card-front'>
+                            <YInputButton value={"خروج"} />
+                        </div>
+                        <button className='flipUpward_card-back relative'>
+                            <YInputButton value={"خروج"} />
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                data-name='Layer 1'
+                                viewBox='0 0 100 125'
+                                x='0px'
+                                y='0px'
+                                className='w-5 fill-added-white group-hover:fill-added-charcoal absolute top-3.5 -translate-y-1/2 left-1/2 -translate-x-1/2 '
+                            >
+                                <path d='M81,66V34a15,15,0,0,0-30,0v3h6V34a9,9,0,0,1,18,0V66a9,9,0,0,1-18,0V63H51v3a15,15,0,0,0,30,0Z' />
+                                <path d='M34,66.24,38.24,62l-9-9H57V47H29.24l9-9L34,33.76,19.88,47.88a3,3,0,0,0,0,4.24Z' />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+export default UserInfo

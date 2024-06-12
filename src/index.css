@@ -78,7 +78,8 @@
         -o-transform: translate(var(--white-BG), var(--white-BG));
     }
 
-    .entranceCardContainer {
+    .entranceCardContainer,
+    .flipUpward_container {
         perspective: 1200px;
     }
 
@@ -117,6 +118,56 @@
         -moz-transform: rotateY(360deg);
         -ms-transform: rotateY(360deg);
         -o-transform: rotateY(360deg);
+    }
+
+    .flipUpward_card {
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        -ms-transform: rotateX(0deg);
+        -o-transform: rotateX(0deg);
+    }
+
+    .flipUpward_card:hover {
+        transform-style: preserve-3d;
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+        -moz-transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+        -o-transform: rotateX(180deg);
+    }
+
+    .flipUpward_card-front {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);
+        -moz-transform: rotateX(0deg);
+        -ms-transform: rotateX(0deg);
+        -o-transform: rotateX(0deg);
+    }
+
+    .flipUpward_card-back {
+        display: none;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+        -moz-transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+        -o-transform: rotateX(180deg);
+    }
+
+    .flipUpward_card:hover .flipUpward_card-back {
+        display: block;
+    }
+
+    .flipUpward_card:hover .flipUpward_card-front {
+        display: none;
+    }
+
+    .flipUpward_card-back input {
+        visibility: hidden;
     }
 
     @media screen and (min-width: 480px) {
