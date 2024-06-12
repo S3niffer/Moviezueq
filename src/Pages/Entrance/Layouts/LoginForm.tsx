@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { Login_Schema } from "./yup_schemas"
-import YButton from "../../../Components/YButton"
+import YInputButton from "../../../Components/YInputButton"
 import FieldErrorMessage from "./FieldErrorMessage"
 
 const LoginForm = ({ buttonValue }: EntranceFormProps) => {
@@ -34,7 +34,7 @@ const LoginForm = ({ buttonValue }: EntranceFormProps) => {
                 />
                 <FieldErrorMessage Field={Form.formState.errors.password} />
             </div>
-            <YButton
+            <YInputButton
                 type='submit'
                 value={buttonValue}
             />

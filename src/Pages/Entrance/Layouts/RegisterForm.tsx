@@ -1,4 +1,4 @@
-import YButton from "../../../Components/YButton"
+import YInputButton from "../../../Components/YInputButton"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { Register_Schema } from "./yup_schemas"
@@ -43,7 +43,7 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
                 />
                 <FieldErrorMessage Field={Form.formState.errors.email} />
             </div>
-            <YButton
+            <YInputButton
                 type='submit'
                 value={buttonValue}
             />
