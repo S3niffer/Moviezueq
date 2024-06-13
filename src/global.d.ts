@@ -21,3 +21,17 @@ interface LoginFormInputs {
     email: string
     password: string
 }
+
+interface GenreBoxProps {
+    id: number
+    name: string
+    imageSrc: string
+}
+
+interface MovieBoxProps {
+    id: number
+    title: string
+    poster: string
+    genres: string[]
+    images: string[]
+}
