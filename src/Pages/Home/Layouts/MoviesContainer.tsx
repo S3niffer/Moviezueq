@@ -42,10 +42,13 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
 }
 
 const MoviesContainer = () => {
-    const { data } = useQuery<MovieListDB>({
+    const { data, isLoading } = useQuery<MovieListDB>({
         queryKey: ["Movies", 1],
         queryFn: () => fetch(`https://moviesapi.ir/api/v1/movies?page=${1}`).then(res => res.json()),
     })
+
+    if (isLoading) return "loading...."
+
     return (
         <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>
             {data?.data?.map(movie => (
