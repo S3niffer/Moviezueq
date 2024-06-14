@@ -25,7 +25,6 @@ interface LoginFormInputs {
 interface GenreBoxProps {
     id: number
     name: string
-    imageSrc: string
 }
 
 interface MovieBoxProps {
@@ -34,4 +33,14 @@ interface MovieBoxProps {
     poster: string
     genres: string[]
     images: string[]
+}
+
+interface MovieListDB {
+    data: MovieBoxProps[]
+    metadata: {
+        current_page: number
+        per_page: number
+        page_count: number
+        total_count: number
+    }
 }
