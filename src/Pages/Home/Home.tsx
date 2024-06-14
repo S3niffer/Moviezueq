@@ -6,14 +6,13 @@ import UserInfo from "./Layouts/UserInfo"
 
 const Home = () => {
     return (
-        <div className='rtl mt-[calc(var(--navbar-height)*1.5)]'>
+        <div className='rtl pt-[calc(var(--navbar-height)*1.5)]'>
             <Navbar />
             <UserInfo />
-
-            <main className='mt-[var(--navbar-height)] container'>
+            <main className='mt-[var(--navbar-height)] container pb-[var(--yellow-BG)]'>
                 <MoviezueqBox>
                     <div className='flex gap-2.5 480:gap-3.5 sm:gap-4 md:gap-5 lg:gap-6 rounded p-1.5'>
-                        <div className='flex-1'>
+                        <div className='flex-[1.25]'>
                             <h4 className=''>ژانر ها</h4>
                         </div>
                         <div className='flex-[4]'>
@@ -22,7 +21,7 @@ const Home = () => {
                     </div>
                 </MoviezueqBox>
                 <div className='flex gap-2.5 480:gap-3.5 sm:gap-4 md:gap-5 lg:gap-6 rounded mt-2.5 480:mt-3.5 sm:mt-4 md:mt-5 lg:mt-6'>
-                    <div className='flex-1'>
+                    <div className='flex-[1.25]'>
                         <MoviezueqBox>
                             <GenresContainer />
                         </MoviezueqBox>
@@ -34,16 +33,6 @@ const Home = () => {
                     </div>
                 </div>
             </main>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
         </div>
     )
 }

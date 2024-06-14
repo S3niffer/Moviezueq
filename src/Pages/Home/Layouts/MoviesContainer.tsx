@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query"
 import React from "react"
 
 const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
@@ -41,99 +42,13 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
 }
 
 const MoviesContainer = () => {
-    const Movies: MovieBoxProps[] = [
-        {
-            id: 1,
-            title: "The Shawshank Redemption",
-            poster: "http://moviesapi.ir/images/tt0111161_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0111161_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 2,
-            title: "The Godfather",
-            poster: "http://moviesapi.ir/images/tt0068646_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0068646_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 1,
-            title: "The Shawshank Redemption",
-            poster: "http://moviesapi.ir/images/tt0111161_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0111161_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 2,
-            title: "The Godfather",
-            poster: "http://moviesapi.ir/images/tt0068646_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0068646_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 1,
-            title: "The Shawshank Redemption",
-            poster: "http://moviesapi.ir/images/tt0111161_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0111161_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 2,
-            title: "The Godfather",
-            poster: "http://moviesapi.ir/images/tt0068646_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0068646_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 1,
-            title: "The Shawshank Redemption",
-            poster: "http://moviesapi.ir/images/tt0111161_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0111161_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0111161_screenshot3.jpg",
-            ],
-        },
-        {
-            id: 2,
-            title: "The Godfather",
-            poster: "http://moviesapi.ir/images/tt0068646_poster.jpg",
-            genres: ["Crime", "Drama"],
-            images: [
-                "http://moviesapi.ir/images/tt0068646_screenshot1.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot2.jpg",
-                "http://moviesapi.ir/images/tt0068646_screenshot3.jpg",
-            ],
-        },
-    ]
+    const { data } = useQuery<MovieListDB>({
+        queryKey: ["Movies", 1],
+        queryFn: () => fetch(`https://moviesapi.ir/api/v1/movies?page=${1}`).then(res => res.json()),
+    })
     return (
         <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>
-            {Movies.map(movie => (
+            {data?.data?.map(movie => (
                 <MovieBox
                     key={movie.id}
                     {...movie}
