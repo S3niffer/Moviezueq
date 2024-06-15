@@ -3,12 +3,33 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { Register_Schema } from "./yup_schemas"
 import FieldErrorMessage from "./FieldErrorMessage"
+import { useMutation } from "@tanstack/react-query"
 
 const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<RegisterFormInputs>({ resolver: yupResolver(Register_Schema) })
 
-    const _FormHandler: SubmitHandler<RegisterFormInputs> = Data => {
-        console.log(Data)
+    const onRegister = (response: RegisterResponse) => {}
+
+    const { mutate: _RegisterHandler } = useMutation({
+        mutationFn: async (data: RegisterFormInputs) => {
+            const response = await fetch("http://localhost:3000/api/moviesapi/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            const result = await response.json()
+
+            return result
+        },
+        onSuccess: data => {
+            console.log(data)
+        },
+    })
+
+    const _FormHandler: SubmitHandler<RegisterFormInputs> = FormData => {
+        _RegisterHandler(FormData)
     }
 
     return (

@@ -17,9 +17,24 @@ interface RegisterFormInputs {
     password: string
 }
 
+interface RegisterResponse {
+    id: number
+    name: string
+    email: string
+    created_at: string
+    updated_at: string
+}
+
 interface LoginFormInputs {
     email: string
     password: string
+}
+
+interface LoginResponse {
+    token_type: "Bearer"
+    expires_in: number
+    access_token: string
+    refresh_token: string
 }
 
 interface GenreBoxProps {

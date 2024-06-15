@@ -3,12 +3,31 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { Login_Schema } from "./yup_schemas"
 import YInputButton from "../../../Components/YInputButton"
 import FieldErrorMessage from "./FieldErrorMessage"
+import { useMutation } from "@tanstack/react-query"
 
 const LoginForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<LoginFormInputs>({ resolver: yupResolver(Login_Schema) })
 
-    const _FormHandler: SubmitHandler<LoginFormInputs> = Data => {
-        console.log(Data)
+    const onLogin = (response: LoginResponse) => {}
+
+    const { mutate: _LoginHandler } = useMutation({
+        mutationFn: async (data: LoginFormInputs) => {
+            const response = await fetch("http://localhost:3000/api/moviesapi/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            const result = await response.json()
+
+            return result
+        },
+        onSuccess: onLogin,
+    })
+
+    const _FormHandler: SubmitHandler<LoginFormInputs> = FormData => {
+        _LoginHandler(FormData)
     }
 
     return (
