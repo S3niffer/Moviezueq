@@ -3,9 +3,11 @@ import LanguageSelector from "./LanguageSelector"
 import SearchMovieInput from "./SearchMovieInput"
 
 const Navbar = () => {
-    const isLogin = true
+    const loaclUser = localStorage.getItem("User")
+    const User = loaclUser ? (JSON.parse(loaclUser) as RegisterResponse) : false
+    const isLoggedIn = "name" in (User || {})
 
-    if (isLogin) {
+    if (isLoggedIn) {
         return (
             <div className='bg-added-oxfordblue h-navBarHeight fixed left-0 right-0 top-0 z-50 shadow shadow-added-charcoal'>
                 <nav className='container py-1 flex items-center justify-between 480:py-1.5 sm:py-2.5 h-full '>
