@@ -1,8 +1,13 @@
+import useLogout from "../../../_utils/useLogout"
 import MoviezueqBox from "../../../Components/MoviezueqBox"
 import YInputButton from "../../../Components/YInputButton"
 
 const UserInfo = () => {
-    const { name, email } = { name: "عرفان حیدر", email: "erfanHeydar@gmail.com" }
+    const local_User = JSON.parse(localStorage.getItem("User") || "") as RegisterResponse
+    const { name, email } = { name: local_User?.name || "", email: local_User?.email || "" }
+
+    const _logout = useLogout()
+
     return (
         <section className='container'>
             <MoviezueqBox>
@@ -15,10 +20,15 @@ const UserInfo = () => {
                         </div>
                         <div className='flex gap-2 items-center'>
                             <p className='border-b border-added-schoolbus'>پست الکترونیکی :</p>{" "}
-                            <span className='text-added-slategray'>{email}</span>
+                            <span className='text-added-slategray font-EnFont text-xs 480:text-sm sm:text-base md:text-lg lg:text-2xl'>
+                                {email}
+                            </span>
                         </div>
                     </div>
-                    <div className='text-center relative flipUpward_container'>
+                    <div
+                        className='text-center relative flipUpward_container'
+                        onClick={_logout}
+                    >
                         <div className='flipUpward_card bg-added-charcoal fill-added-white rounded hover:bg-added-schoolbus hover:fill-added-charcoal group transition-all duration-300 cursor-pointer'>
                             <div className='flipUpward_card-front'>
                                 <YInputButton value={"خروج"} />

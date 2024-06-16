@@ -4,11 +4,16 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { Register_Schema } from "./yup_schemas"
 import FieldErrorMessage from "./FieldErrorMessage"
 import { useMutation } from "@tanstack/react-query"
+import { useNavigate } from "react-router-dom"
 
 const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<RegisterFormInputs>({ resolver: yupResolver(Register_Schema) })
+    const Navigate = useNavigate()
 
-    const onRegister = (response: RegisterResponse) => {}
+    const onRegister = (response: RegisterResponse) => {
+        localStorage.setItem("User", JSON.stringify(response))
+        Navigate("/")
+    }
 
     const { mutate: _RegisterHandler } = useMutation({
         mutationFn: async (data: RegisterFormInputs) => {
@@ -23,9 +28,7 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
 
             return result
         },
-        onSuccess: data => {
-            console.log(data)
-        },
+        onSuccess: onRegister,
     })
 
     const _FormHandler: SubmitHandler<RegisterFormInputs> = FormData => {

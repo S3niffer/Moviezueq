@@ -4,13 +4,14 @@ import { Login_Schema } from "./yup_schemas"
 import YInputButton from "../../../Components/YInputButton"
 import FieldErrorMessage from "./FieldErrorMessage"
 import { useMutation } from "@tanstack/react-query"
+import useloginByToken from "../../../_utils/useloginByToken"
 
 const LoginForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<LoginFormInputs>({ resolver: yupResolver(Login_Schema) })
 
-    const onLogin = (response: LoginResponse) => {}
+    const _LoginHandler = useloginByToken()
 
-    const { mutate: _LoginHandler } = useMutation({
+    const { mutate: _GetToken } = useMutation({
         mutationFn: async (data: LoginFormInputs) => {
             const response = await fetch("http://localhost:3000/api/moviesapi/login", {
                 method: "POST",
@@ -23,11 +24,13 @@ const LoginForm = ({ buttonValue }: EntranceFormProps) => {
 
             return result
         },
-        onSuccess: onLogin,
+        onSuccess: ({ access_token }: LoginResponse) => {
+            _LoginHandler(access_token)
+        },
     })
 
     const _FormHandler: SubmitHandler<LoginFormInputs> = FormData => {
-        _LoginHandler(FormData)
+        _GetToken(FormData)
     }
 
     return (
