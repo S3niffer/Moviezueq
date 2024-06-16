@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import getGenreIconSrc from "../../../_lib/getGenreIconSrc"
+import getGenreIconSrc from "../../../_utils/getGenreIconSrc"
 
 const GenreBox = ({ name }: GenreBoxProps) => {
     return (
