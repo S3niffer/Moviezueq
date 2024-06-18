@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import React from "react"
 import { Link } from "react-router-dom"
+import Loading from "../../../Components/Loading"
 
 const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
     return (
@@ -52,7 +53,7 @@ const MoviesContainer = () => {
         queryFn: () => fetch(`https://moviesapi.ir/api/v1/movies?page=${1}`).then(res => res.json()),
     })
 
-    if (isLoading) return "loading...."
+    if (isLoading) return <Loading />
 
     return (
         <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>

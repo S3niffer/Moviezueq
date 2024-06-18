@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import getGenreIconSrc from "../../../_utils/getGenreIconSrc"
+import Loading from "../../../Components/Loading"
 
 const GenreBox = ({ name }: GenreBoxProps) => {
     return (
@@ -22,7 +23,7 @@ const GenresContainer = () => {
         queryFn: () => fetch("https://moviesapi.ir/api/v1/genres").then(res => res.json()),
     })
 
-    if (isLoading) return "loading...."
+    if (isLoading) return <Loading />
 
     return (
         <ul className='text-added-slategray'>

@@ -7,6 +7,7 @@ import BreadCrumb from "./Layouts/BreadCrumb"
 import DetailsSection from "./Layouts/DetailsSection"
 import ImdbSection from "./Layouts/ImdbSection"
 import Poster from "./Layouts/Poster"
+import Loading from "../../Components/Loading"
 
 const SingleMovie = () => {
     const { movieId } = useParams()
@@ -26,7 +27,7 @@ const SingleMovie = () => {
             <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
                 <MoviezueqBox>
                     {isLoading || !data ? (
-                        <div>loading ...</div>
+                        <Loading />
                     ) : error ? (
                         <div>{error.message}</div>
                     ) : (
