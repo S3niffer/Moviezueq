@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import React from "react"
+import { Link } from "react-router-dom"
 
 const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
     return (
@@ -12,12 +13,14 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
                 />
             </div>
             <div className='mr-2 flex-1 480:mr-2.5 sm:mr-3 md:mr-3.5 lg:mr-4 flex flex-col justify-between'>
-                <div>
-                    <p className='flex flex-col'>
+                <div className=' flex-1 flex flex-col justify-evenly'>
+                    <p>
                         عنوان:{" "}
-                        <span className='cursor-pointer text-center text-added-schoolbus font-EnFont text-[10px] 480:text-xs sm:text-sm md:text-base lg:text-lg'>
-                            {title}
-                        </span>
+                        <Link to={`/movie/${id}`}>
+                            <span className='cursor-pointer text-center text-added-schoolbus font-EnFont text-[10px] 480:text-xs sm:text-sm md:text-base lg:text-lg line-clamp-1 ltr'>
+                                {title}
+                            </span>
+                        </Link>
                     </p>
                     <p>
                         در ژانر:{" "}
@@ -32,9 +35,11 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
                     </p>
                 </div>
                 <div className='flex justify-end w-full '>
-                    <button className='bg-added-slategray rounded text-xs leading-[0.1rem] border border-added-slategray hover:border-added-schoolbus transition-all duration-300 hover:pl-4 py-1.5 px-1 480:text-base 480:leading-[0.3rem] sm:text-lg sm:leading-[0.7rem] md:text-xl md:leading-4 lg:text-2xl lg:leading-5 lg:border-[3px]'>
-                        بیشتر...
-                    </button>
+                    <Link to={`/movie/${id}`}>
+                        <button className='bg-added-slategray rounded text-xs leading-[0.1rem] border border-added-slategray hover:border-added-schoolbus transition-all duration-300 hover:pl-4 py-1.5 px-1 480:text-base 480:leading-[0.3rem] sm:text-lg sm:leading-[0.7rem] md:text-xl md:leading-4 lg:text-2xl lg:leading-5 lg:border-[3px]'>
+                            بیشتر...
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
