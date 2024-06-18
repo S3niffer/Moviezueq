@@ -20,12 +20,6 @@ const GenresContainer = () => {
     const { data: Gneres, isLoading } = useQuery<GenreBoxProps[]>({
         queryKey: ["genres"],
         queryFn: () => fetch("https://moviesapi.ir/api/v1/genres").then(res => res.json()),
-        gcTime: Infinity,
-        staleTime: Infinity,
-        refetchInterval: Infinity,
-        refetchIntervalInBackground: false,
-        refetchOnReconnect: false,
-        refetchOnWindowFocus: false,
     })
 
     if (isLoading) return "loading...."
