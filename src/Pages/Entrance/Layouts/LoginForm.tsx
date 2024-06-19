@@ -1,38 +1,16 @@
-import { SubmitHandler, useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Login_Schema } from "./yup_schemas"
+import { useForm } from "react-hook-form"
+import LoginFormHandler from "../../../_utils/LoginFormHandler"
+import usePasswordVisibilityToggle from "../../../_utils/usePasswordVisibilityToggle"
+import Loading from "../../../Components/Loading"
 import YInputButton from "../../../Components/YInputButton"
 import FieldErrorMessage from "./FieldErrorMessage"
-import { useMutation } from "@tanstack/react-query"
-import useloginByToken from "../../../_utils/useloginByToken"
-import usePasswordVisibilityToggle from "../../../_utils/usePasswordVisibilityToggle"
+import { Login_Schema } from "./yup_schemas"
 
 const LoginForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<LoginFormInputs>({ resolver: yupResolver(Login_Schema) })
 
-    const _LoginHandler = useloginByToken()
-
-    const { mutate: _GetToken } = useMutation({
-        mutationFn: async (data: LoginFormInputs) => {
-            const response = await fetch("http://localhost:3000/api/moviesapi/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-            const result = await response.json()
-
-            return result
-        },
-        onSuccess: ({ access_token }: LoginResponse) => {
-            _LoginHandler(access_token)
-        },
-    })
-
-    const _FormHandler: SubmitHandler<LoginFormInputs> = FormData => {
-        _GetToken(FormData)
-    }
+    const { _FormHandler, LoadingStatus } = LoginFormHandler()
 
     const { icon, inputType } = usePasswordVisibilityToggle()
 
@@ -60,10 +38,14 @@ const LoginForm = ({ buttonValue }: EntranceFormProps) => {
                 {icon}
                 <FieldErrorMessage Field={Form.formState.errors.password} />
             </div>
-            <YInputButton
-                type='submit'
-                value={buttonValue}
-            />
+            {LoadingStatus ? (
+                <Loading />
+            ) : (
+                <YInputButton
+                    type='submit'
+                    value={buttonValue}
+                />
+            )}
         </form>
     )
 }

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
 
-const useloginByToken = () => {
+const useloginByToken = (stopLoading: () => void) => {
     const Navigate = useNavigate()
 
     const { mutate } = useMutation({
@@ -11,6 +11,7 @@ const useloginByToken = () => {
                 body: JSON.stringify({ token: token }),
             }).then(res => res.json()),
         onSuccess: (response: RegisterResponse) => {
+            stopLoading()
             localStorage.setItem("User", JSON.stringify(response))
             Navigate("/")
         },
