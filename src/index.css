@@ -170,6 +170,20 @@
         visibility: hidden;
     }
 
+    .popupProgress {
+        animation: W0To100 3.1s ease-in-out;
+        -webkit-animation: W0To100 3.1s ease-in-out;
+    }
+
+    @keyframes W0To100 {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
     @media screen and (min-width: 480px) {
         :root {
             --navbar-height: 56px;
