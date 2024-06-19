@@ -1,40 +1,16 @@
-import YInputButton from "../../../Components/YInputButton"
-import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Register_Schema } from "./yup_schemas"
-import FieldErrorMessage from "./FieldErrorMessage"
-import { useMutation } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import RegisterFormHandler from "../../../_utils/RegisterFormHandler"
 import usePasswordVisibilityToggle from "../../../_utils/usePasswordVisibilityToggle"
+import Loading from "../../../Components/Loading"
+import YInputButton from "../../../Components/YInputButton"
+import FieldErrorMessage from "./FieldErrorMessage"
+import { Register_Schema } from "./yup_schemas"
 
 const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
     const Form = useForm<RegisterFormInputs>({ resolver: yupResolver(Register_Schema) })
-    const Navigate = useNavigate()
 
-    const onRegister = (response: RegisterResponse) => {
-        localStorage.setItem("User", JSON.stringify(response))
-        Navigate("/")
-    }
-
-    const { mutate: _RegisterHandler } = useMutation({
-        mutationFn: async (data: RegisterFormInputs) => {
-            const response = await fetch("http://localhost:3000/api/moviesapi/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-            const result = await response.json()
-
-            return result
-        },
-        onSuccess: onRegister,
-    })
-
-    const _FormHandler: SubmitHandler<RegisterFormInputs> = FormData => {
-        _RegisterHandler(FormData)
-    }
+    const { _FormHandler, LoadingStatus } = RegisterFormHandler()
 
     const { icon, inputType } = usePasswordVisibilityToggle()
 
@@ -71,10 +47,15 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
                 />
                 <FieldErrorMessage Field={Form.formState.errors.email} />
             </div>
-            <YInputButton
-                type='submit'
-                value={buttonValue}
-            />
+
+            {LoadingStatus ? (
+                <Loading />
+            ) : (
+                <YInputButton
+                    type='submit'
+                    value={buttonValue}
+                />
+            )}
         </form>
     )
 }
