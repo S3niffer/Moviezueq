@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
 import Navbar from "../../Components/Layouts/Navbar"
+import Loading from "../../Components/Loading"
 import MoviezueqBox from "../../Components/MoviezueqBox"
 import getBgImageSrc from "../../_utils/getBgImageSrc"
 import BreadCrumb from "./Layouts/BreadCrumb"
 import DetailsSection from "./Layouts/DetailsSection"
 import ImdbSection from "./Layouts/ImdbSection"
 import Poster from "./Layouts/Poster"
-import Loading from "../../Components/Loading"
 
 const SingleMovie = () => {
     const { movieId } = useParams()

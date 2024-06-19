@@ -1,8 +1,8 @@
 import { useState } from "react"
 import Navbar from "../../Components/Layouts/Navbar"
 import EntranceCardContent from "./Layouts/EntranceCard"
-import RegisterForm from "./Layouts/RegisterForm"
 import LoginForm from "./Layouts/LoginForm"
+import RegisterForm from "./Layouts/RegisterForm"
 
 const Entrance = () => {
     const [formName, setFormName] = useState<EntranceActiveForm>("register")
