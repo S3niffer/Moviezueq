@@ -1,10 +1,13 @@
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
+import usePopUp from "../Lib/zustand/popup"
 import useloginByToken from "./useloginByToken"
 
 const LoginFormHandler = () => {
     const [LoadingStatus, setLoadingStatus] = useState<boolean>(false)
+
+    const show = usePopUp(e => e.show)
 
     const stopLoading = () => {
         setLoadingStatus(false)
@@ -26,6 +29,7 @@ const LoginFormHandler = () => {
             return result
         },
         onSuccess: ({ access_token }: LoginResponse) => {
+            show("login")
             _LoginHandler(access_token)
         },
     })
