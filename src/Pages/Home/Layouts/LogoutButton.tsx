@@ -66,7 +66,10 @@ const LogoutButton = () => {
                 <div className={`${ModalStatus ? "block" : "hidden"}`}>
                     <div
                         className='fixed backdrop-blur z-40 top-0 right-0 left-0 bottom-0 flex items-center justify-center'
-                        onClick={closeModal}
+                        onClick={e => {
+                            if (e.target !== e.currentTarget) return
+                            closeModal()
+                        }}
                     >
                         <div className='w-52 480:w-60 sm:w-72 md:w-80 lg:w-96 font-FaFont text-added-white 480:text-xl sm:text-2xl md:text-3xl lg:text-4xl rtl'>
                             <MoviezueqBox>
