@@ -6,7 +6,7 @@ import Loading from "../../../Components/Loading"
 const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
     return (
         <div className='bg-added-charcoal rounded-md p-1 480:p-1.5 sm:p-2 md:p-2.5 lg:p-3 flex w-full border border-added-slategray md:border-[3px] hover:border-added-white transition-colors'>
-            <div className='w-14 aspect-[2/3] outline overflow-hidden outline-added-slategray schoolbus rounded 480:w-16 sm:w-24 md:w-28 lg:w-32'>
+            <div className='w-14 aspect-[2/3] outline overflow-hidden outline-added-slategray rounded 480:w-16 sm:w-24 md:w-28 lg:w-32'>
                 <img
                     src={poster}
                     alt={`${title} movie poster`}
