@@ -93,3 +93,15 @@ interface DetailsSectionI {
     director: string
     actors: string
 }
+
+interface popUpStore {
+    status: boolean
+    value: "login" | "register"
+    show: (value: popUpStore["value"]) => void
+    close: () => void
+}
+
+interface genreStore {
+    selected: null | number
+    selectOne: (genre: genreStore["selected"]) => void
+}

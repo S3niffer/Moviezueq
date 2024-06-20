@@ -1,16 +1,30 @@
 import { useQuery } from "@tanstack/react-query"
 import getGenreIconSrc from "../../../_utils/getGenreIconSrc"
 import Loading from "../../../Components/Loading"
+import useSelectGenre from "../../../Lib/zustand/genre"
 
-const GenreBox = ({ name }: GenreBoxProps) => {
+const GenreBox = ({ name, id }: GenreBoxProps) => {
+    const { selectOne, selected } = useSelectGenre()
+
     return (
-        <li className='cursor-pointer hover:text-added-white transition-all group flex items-center gap-1 480:gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3'>
+        <li
+            className={`cursor-pointer hover:text-added-white transition-all group flex items-center gap-1 480:gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3 ${
+                selected === id ? "border-b border-b-added-schoolbus" : ""
+            }`}
+            onClick={() => {
+                selectOne(id)
+            }}
+        >
             <img
                 src={getGenreIconSrc(name)}
                 alt={`${name} genre`}
                 className='w-3 480:w-4 sm:w-5 md:w-6 lg:w-7'
             />
-            <span className='inline-block group-hover:-translate-x-2 480:group-hover:-translate-x-3 sm:group-hover:-translate-x-4 md:group-hover:-translate-x-5 lg:group-hover:-translate-x-6 transition-transform duration-500'>
+            <span
+                className={`inline-block group-hover:-translate-x-2 480:group-hover:-translate-x-3 sm:group-hover:-translate-x-4 md:group-hover:-translate-x-5 lg:group-hover:-translate-x-6 transition-transform duration-500 ${
+                    selected === id ? "text-added-schoolbus" : ""
+                }`}
+            >
                 {name}
             </span>
         </li>

@@ -1,10 +1,10 @@
-import { useInfiniteQuery } from "@tanstack/react-query"
 import React from "react"
-import { Link } from "react-router-dom"
-import Loading from "../../../Components/Loading"
 import InfiniteScroll from "react-infinite-scroll-component"
+import { Link } from "react-router-dom"
+import useMovies from "../../../_utils/useMovies"
+import Loading from "../../../Components/Loading"
 
-const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
+const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
     return (
         <div className='bg-added-charcoal rounded-md p-1 480:p-1.5 sm:p-2 md:p-2.5 lg:p-3 flex w-full border border-added-slategray md:border-[3px] hover:border-added-white transition-colors'>
             <div className='w-14 aspect-[2/3] outline overflow-hidden outline-added-slategray rounded 480:w-16 sm:w-24 md:w-28 lg:w-32'>
@@ -49,17 +49,7 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
 }
 
 const MoviesContainer = () => {
-    const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery<MovieListDB>({
-        queryKey: ["Movies"],
-        queryFn: ({ pageParam }) => fetch(`https://moviesapi.ir/api/v1/movies?page=${pageParam}`).then(res => res.json()),
-        initialPageParam: 1,
-        getNextPageParam: (lastPage, allPages) => {
-            const currentPageNumber = allPages.length
-            const totalPages = lastPage.metadata.page_count
-
-            return +currentPageNumber == totalPages ? undefined : +currentPageNumber + 1
-        },
-    })
+    const { data, isLoading, fetchNextPage, hasNextPage } = useMovies()
 
     if (isLoading) return <Loading />
 
