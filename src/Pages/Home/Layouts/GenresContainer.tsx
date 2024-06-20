@@ -13,6 +13,10 @@ const GenreBox = ({ name, id }: GenreBoxProps) => {
             }`}
             onClick={() => {
                 selectOne(id)
+                window.scrollTo({
+                    behavior: "smooth",
+                    top: 0,
+                })
             }}
         >
             <img
