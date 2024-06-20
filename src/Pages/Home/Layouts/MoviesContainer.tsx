@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery } from "@tanstack/react-query"
 import React from "react"
 import { Link } from "react-router-dom"
 import Loading from "../../../Components/Loading"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
     return (
@@ -48,21 +49,46 @@ const MovieBox = ({ genres, id, images, poster, title }: MovieBoxProps) => {
 }
 
 const MoviesContainer = () => {
-    const { data, isLoading } = useQuery<MovieListDB>({
-        queryKey: ["Movies", 1],
-        queryFn: () => fetch(`https://moviesapi.ir/api/v1/movies?page=${1}`).then(res => res.json()),
+    const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery<MovieListDB>({
+        queryKey: ["Movies"],
+        queryFn: ({ pageParam }) => fetch(`https://moviesapi.ir/api/v1/movies?page=${pageParam}`).then(res => res.json()),
+        initialPageParam: 1,
+        getNextPageParam: (lastPage, allPages) => {
+            const currentPageNumber = allPages.length
+            const totalPages = lastPage.metadata.page_count
+
+            return +currentPageNumber == totalPages ? undefined : +currentPageNumber + 1
+        },
     })
 
     if (isLoading) return <Loading />
 
+    const moviesFetchedSoFar =
+        data?.pages.reduce((total, next) => {
+            return total + next.data.length
+        }, 0) || 0
+
     return (
         <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>
-            {data?.data?.map(movie => (
-                <MovieBox
-                    key={movie.id}
-                    {...movie}
-                />
-            ))}
+            <InfiniteScroll
+                dataLength={moviesFetchedSoFar}
+                next={fetchNextPage}
+                hasMore={hasNextPage}
+                loader={<Loading />}
+            >
+                {data?.pages.map(page => {
+                    return (
+                        <React.Fragment key={page.metadata.current_page}>
+                            {page.data.map(movie => (
+                                <MovieBox
+                                    key={movie.id}
+                                    {...movie}
+                                />
+                            ))}
+                        </React.Fragment>
+                    )
+                })}
+            </InfiniteScroll>
         </div>
     )
 }

@@ -53,7 +53,7 @@ interface MovieBoxProps {
 interface MovieListDB {
     data: MovieBoxProps[]
     metadata: {
-        current_page: number
+        current_page: string
         per_page: number
         page_count: number
         total_count: number
