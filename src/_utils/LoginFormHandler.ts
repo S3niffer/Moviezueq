@@ -7,7 +7,7 @@ import useloginByToken from "./useloginByToken"
 const LoginFormHandler = () => {
     const [LoadingStatus, setLoadingStatus] = useState<boolean>(false)
 
-    const show = usePopUp(e => e.show)
+    const show = usePopUp(store => store.show)
 
     const stopLoading = () => {
         setLoadingStatus(false)
