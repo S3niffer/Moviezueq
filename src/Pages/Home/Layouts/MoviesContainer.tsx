@@ -69,13 +69,13 @@ const MoviesContainer = () => {
         }, 0) || 0
 
     return (
-        <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>
-            <InfiniteScroll
-                dataLength={moviesFetchedSoFar}
-                next={fetchNextPage}
-                hasMore={hasNextPage}
-                loader={<Loading />}
-            >
+        <InfiniteScroll
+            dataLength={moviesFetchedSoFar}
+            next={fetchNextPage}
+            hasMore={hasNextPage}
+            loader={<Loading />}
+        >
+            <div className='flex flex-wrap gap-1.5 480:gap-2 sm:gap-2.5 md:gap-3.5 lg:gap-4'>
                 {data?.pages.map(page => {
                     return (
                         <React.Fragment key={page.metadata.current_page}>
@@ -88,8 +88,8 @@ const MoviesContainer = () => {
                         </React.Fragment>
                     )
                 })}
-            </InfiniteScroll>
-        </div>
+            </div>
+        </InfiniteScroll>
     )
 }
 export default MoviesContainer
