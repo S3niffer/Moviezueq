@@ -105,3 +105,17 @@ interface genreStore {
     selected: null | number
     selectOne: (genre: genreStore["selected"]) => void
 }
+
+type authenticationStore = (
+    | {
+          status: false
+          user: {}
+      }
+    | {
+          status: true
+          user: RegisterResponse
+      }
+) & {
+    setUser: (user: RegisterResponse) => void
+    logout: () => void
+}

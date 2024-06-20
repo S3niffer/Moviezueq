@@ -1,11 +1,10 @@
+import useAuthentication from "../../Lib/zustand/authentication"
 import Logo from "../Logo"
 import LanguageSelector from "./LanguageSelector"
 import SearchMovieInput from "./SearchMovieInput"
 
 const Navbar = () => {
-    const loaclUser = localStorage.getItem("User")
-    const User = loaclUser ? (JSON.parse(loaclUser) as RegisterResponse) : false
-    const isLoggedIn = "name" in (User || {})
+    const isLoggedIn = useAuthentication(store => store.status)
 
     if (isLoggedIn) {
         return (

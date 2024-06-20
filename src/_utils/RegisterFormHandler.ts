@@ -2,12 +2,15 @@ import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
+import useAuthentication from "../Lib/zustand/authentication"
 import usePopUp from "../Lib/zustand/popup"
 
 const RegisterFormHandler = () => {
     const [LoadingStatus, setLoadingStatus] = useState<boolean>(false)
 
-    const show = usePopUp(e => e.show)
+    const setUser = useAuthentication(store => store.setUser)
+
+    const show = usePopUp(store => store.show)
 
     const Navigate = useNavigate()
 
@@ -15,6 +18,8 @@ const RegisterFormHandler = () => {
         show("register")
         setLoadingStatus(false)
         localStorage.setItem("User", JSON.stringify(response))
+        setUser(response)
+
         Navigate("/")
     }
 

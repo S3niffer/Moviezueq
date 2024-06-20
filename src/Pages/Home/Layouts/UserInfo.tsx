@@ -1,9 +1,9 @@
 import MoviezueqBox from "../../../Components/MoviezueqBox"
+import useAuthentication from "../../../Lib/zustand/authentication"
 import LogoutButton from "./LogoutButton"
 
 const UserInfo = () => {
-    const local_User = JSON.parse(localStorage.getItem("User") || "") as RegisterResponse
-    const { name, email } = { name: local_User?.name || "", email: local_User?.email || "" }
+    const { name, email } = useAuthentication(store => store.user) as RegisterResponse
 
     return (
         <section className='container'>
