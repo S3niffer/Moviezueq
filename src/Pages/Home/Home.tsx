@@ -1,4 +1,5 @@
 import Navbar from "../../Components/Layouts/Navbar"
+import ScrollToTop from "../../Components/Layouts/ScrollToTop"
 import MoviezueqBox from "../../Components/MoviezueqBox"
 import GenresContainer from "./Layouts/GenresContainer"
 import MoviesContainer from "./Layouts/MoviesContainer"
@@ -21,10 +22,11 @@ const Home = () => {
                     </div>
                 </MoviezueqBox>
                 <div className='flex gap-2.5 480:gap-3.5 sm:gap-4 md:gap-5 lg:gap-6 rounded mt-2.5 480:mt-3.5 sm:mt-4 md:mt-5 lg:mt-6'>
-                    <div className='flex-[1.25]'>
+                    <div className='flex-[1.25] relative'>
                         <MoviezueqBox>
                             <GenresContainer />
                         </MoviezueqBox>
+                        <ScrollToTop />
                     </div>
                     <div className='flex-[4]'>
                         <MoviezueqBox>
