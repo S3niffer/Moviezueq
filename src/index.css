@@ -175,6 +175,22 @@
         -webkit-animation: W0To100 3.1s ease-in-out;
     }
 
+    ::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--slategray);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--charcoal);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #02182b;
+    }
+
     @keyframes W0To100 {
         0% {
             width: 0%;
@@ -189,12 +205,20 @@
             --navbar-height: 56px;
             --yellow-BG: 8px;
         }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
     }
 
     @media screen and (min-width: 800px) {
         :root {
             --navbar-height: 64px;
             --yellow-BG: 10px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
         }
     }
 
@@ -206,6 +230,10 @@
 
         .container {
             max-width: 1024px !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 14px;
         }
     }
 }
