@@ -49,18 +49,13 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
 }
 
 const MoviesContainer = () => {
-    const { data, isLoading, fetchNextPage, hasNextPage } = useMovies()
+    const { data, isLoading, fetchNextPage, hasNextPage, fetchedSoFar } = useMovies()
 
     if (isLoading) return <Loading />
 
-    const moviesFetchedSoFar =
-        data?.pages.reduce((total, next) => {
-            return total + next.data.length
-        }, 0) || 0
-
     return (
         <InfiniteScroll
-            dataLength={moviesFetchedSoFar}
+            dataLength={fetchedSoFar}
             next={fetchNextPage}
             hasMore={hasNextPage}
             loader={<Loading />}

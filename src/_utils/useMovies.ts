@@ -1,8 +1,17 @@
-import { useInfiniteQuery } from "@tanstack/react-query"
+import { InfiniteData, useInfiniteQuery, UseInfiniteQueryResult } from "@tanstack/react-query"
 import useSelectGenre from "../Lib/zustand/genre"
 
 const useMovies = () => {
     const Genre = useSelectGenre(store => store.selected)
+
+    const _returner = (result: UseInfiniteQueryResult<InfiniteData<MovieListDB, unknown>, Error>) => {
+        const fetchedSoFar =
+            result.data?.pages.reduce((total, next) => {
+                return total + next.data.length
+            }, 0) || 0
+
+        return { ...result, fetchedSoFar }
+    }
 
     if (Genre) {
         const FilltredByGenre = useInfiniteQuery<MovieListDB>({
@@ -18,7 +27,7 @@ const useMovies = () => {
             },
         })
 
-        return FilltredByGenre
+        return _returner(FilltredByGenre)
     } else {
         const AllMovies = useInfiniteQuery<MovieListDB>({
             queryKey: ["Movies"],
@@ -32,7 +41,7 @@ const useMovies = () => {
             },
         })
 
-        return AllMovies
+        return _returner(AllMovies)
     }
 }
 
