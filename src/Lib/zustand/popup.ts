@@ -1,12 +1,5 @@
 import { create } from "zustand"
 
-interface popUpStore {
-    status: boolean
-    value: "login" | "register"
-    show: (value: popUpStore["value"]) => void
-    close: () => void
-}
-
 const usePopUp = create<popUpStore>(set => ({
     status: false,
     value: "login",
