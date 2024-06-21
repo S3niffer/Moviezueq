@@ -119,3 +119,8 @@ type authenticationStore = (
     setUser: (user: RegisterResponse) => void
     logout: () => void
 }
+
+interface languageStore {
+    lang: "FA" | "EN"
+    ChangeLanguage: (lang: languageStore["lang"]) => void
+}
