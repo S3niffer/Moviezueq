@@ -7,7 +7,7 @@ const byPassCorsAxiosInstance = axios.create({
     },
 })
 
-const useAuthenticationApi = async <T>(method: Method, url: string, data?: any): Promise<T> => {
+const useAuthenticationApi = async <T = any>(method: Method, url: string, data?: any): Promise<T> => {
     const { data: response } = await byPassCorsAxiosInstance({
         method,
         url,
