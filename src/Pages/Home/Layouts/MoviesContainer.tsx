@@ -2,6 +2,7 @@ import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { Link } from "react-router-dom"
 import _TranslateGenreNameToPersian from "../../../_utils/_TranslateGenreNameToPersian"
+import _useTextTranslator from "../../../_utils/_useTextTranslator"
 import useMovies from "../../../_utils/useMovies"
 import Loading from "../../../Components/Loading"
 
@@ -18,7 +19,7 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
             <div className='mr-2 flex-1 480:mr-2.5 sm:mr-3 md:mr-3.5 lg:mr-4 flex flex-col justify-between'>
                 <div className=' flex-1 flex flex-col justify-evenly'>
                     <p>
-                        عنوان:{" "}
+                        {_useTextTranslator("عنوان", "Title")}:{" "}
                         <Link to={`/movie/${id}`}>
                             <span className='cursor-pointer text-center text-added-schoolbus font-EnFont text-[10px] 480:text-xs sm:text-sm md:text-base lg:text-lg line-clamp-1 ltr'>
                                 {title}
@@ -26,7 +27,7 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
                         </Link>
                     </p>
                     <p>
-                        در ژانر:{" "}
+                        {_useTextTranslator("ژانر", "Genre")}:{" "}
                         <span className='pr-3 text-added-white'>
                             {genres.map((genre, index) => (
                                 <React.Fragment key={genre}>
@@ -40,7 +41,7 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
                 <div className='flex justify-end w-full '>
                     <Link to={`/movie/${id}`}>
                         <button className='bg-added-slategray rounded text-xs leading-[0.1rem] border border-added-slategray hover:border-added-schoolbus transition-all duration-300 hover:pl-4 py-1.5 px-1 480:text-base 480:leading-[0.3rem] sm:text-lg sm:leading-[0.7rem] md:text-xl md:leading-4 lg:text-2xl lg:leading-5 lg:border-[3px]'>
-                            بیشتر...
+                            {_useTextTranslator("بیشتر", "more")}...
                         </button>
                     </Link>
                 </div>

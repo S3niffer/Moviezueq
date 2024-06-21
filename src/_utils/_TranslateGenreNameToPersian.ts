@@ -1,4 +1,9 @@
+import useLanguage from "../Lib/zustand/language"
+
 const _TranslateGenreNameToPersian = (name: string): string => {
+    const lang = useLanguage(store => store.lang)
+
+    if (lang === "EN") return name
     switch (name) {
         case "Crime":
             return "جنایی"

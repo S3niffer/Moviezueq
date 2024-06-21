@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import _useTextTranslator from "../../../_utils/_useTextTranslator"
 import useLogout from "../../../_utils/useLogout"
 import MoviezueqBox from "../../../Components/MoviezueqBox"
 import Portal from "../../../Components/Portal"
@@ -44,10 +45,10 @@ const LogoutButton = () => {
             >
                 <div className='flipUpward_card bg-added-charcoal fill-added-white rounded hover:bg-added-schoolbus hover:fill-added-charcoal group transition-all duration-300 cursor-pointer'>
                     <div className='flipUpward_card-front'>
-                        <YInputButton value={"خروج"} />
+                        <YInputButton value={_useTextTranslator("خروج", "logout")} />
                     </div>
                     <button className='flipUpward_card-back relative'>
-                        <YInputButton value={"خروج"} />
+                        <YInputButton value={_useTextTranslator("خروج", "logout")} />
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             data-name='Layer 1'
@@ -83,20 +84,22 @@ const LogoutButton = () => {
                                             alt='close icon x mark'
                                         />
                                     </button>
-                                    <div className='text-center'>میخوای بری؟</div>
+                                    <div className='text-center'>
+                                        {_useTextTranslator("میخوای بری؟", "do you want to leave?")}
+                                    </div>
                                     <div className='flex items-center justify-between'>
                                         <button
                                             className='bg-[#ffdb00ea] hover:bg-[#ffeb10] rounded px-2 480:px-2.5 sm:px-3 md:px-3.5 lg:px-4 text-added-oxfordblue transition-all duration-300'
                                             onClick={closeModal}
                                         >
                                             {" "}
-                                            دستم خورد
+                                            {_useTextTranslator("دستم خورد", "missclick")}
                                         </button>
                                         <button
                                             className='text-[#ffffffea] hover:text-added-white bg-added-charcoal hover:bg-added-slategray rounded px-2 480:px-2.5 sm:px-3 md:px-3.5 lg:px-4 transition-all duration-300'
                                             onClick={_logout}
                                         >
-                                            آره دیگه{" "}
+                                            {_useTextTranslator("آره دیگه", "umm yeah")}{" "}
                                         </button>
                                     </div>
                                 </div>

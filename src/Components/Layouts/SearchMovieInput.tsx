@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import _useTextTranslator from "../../_utils/_useTextTranslator"
 import useSerach from "../../_utils/useSerach"
 import Loading from "../Loading"
 import Portal from "../Portal"
@@ -54,7 +55,7 @@ const SearchMovieInput = () => {
                 <input
                     type='text'
                     className='bg-transparent outline-none h-7 sm:h-8 md:h-9 lg:h-10 placeholder:text-added-charcoal w-[88%] pr-1 focus:placeholder:text-added-slategray 480:pr-1.5 sm:pr-2 md:pr-2.5 rtl'
-                    placeholder='دنبال چی میگردی؟'
+                    placeholder={_useTextTranslator("دنبال چی میگردی؟", "what do u looking for?")}
                     value={serchValue}
                     onChange={e => setSerchvalue(e.target.value)}
                 />
