@@ -8,7 +8,11 @@ import searchIcon from "/Pics/search-icon.png"
 
 const SearchResultItems = ({ Movies }: { Movies: MovieBoxProps[] }) => {
     if (Movies.length === 0) {
-        return <div className='bg-added-oxfordblue rounded p-0.5 text-added-slategray text-center'>موردی یافت نشد!</div>
+        return (
+            <div className='bg-added-oxfordblue rounded p-0.5 text-added-slategray text-center'>
+                {_useTextTranslator("موردی یافت نشد!", "nothing found!")}
+            </div>
+        )
     }
     return Movies.map(movie => (
         <Link

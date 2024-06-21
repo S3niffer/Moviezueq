@@ -4,6 +4,7 @@ import Navbar from "../../Components/Layouts/Navbar"
 import Loading from "../../Components/Loading"
 import MoviezueqBox from "../../Components/MoviezueqBox"
 import useLayoutDataApi from "../../Lib/axios/LayoutDataApi"
+import _useTextTranslator from "../../_utils/_useTextTranslator"
 import getBgImageSrc from "../../_utils/getBgImageSrc"
 import BreadCrumb from "./Layouts/BreadCrumb"
 import DetailsSection from "./Layouts/DetailsSection"
@@ -19,6 +20,18 @@ const SingleMovie = () => {
         queryFn: () => useLayoutDataApi("GET", `/movies/${movieId}`),
     })
 
+    const SingleMoviePagetext = {
+        IdMore250: _useTextTranslator(
+            `! فیلم هایی که با ID بزرگتر از 250 هستن رو به این صورت نمایش داده میشود چون توسط توسعه دهنده اصلی Api
+        قرار داده نشدند و همه پراپرتی های مورد نیاز رو ندارند.`,
+            "!Movies with an ID greater than 250 will be presented like this because these movies are not provided by the original API developer and do not have the requirement property."
+        ),
+        titleMore250: _useTextTranslator("عنوان", "title"),
+        yearMore250: _useTextTranslator("سال", "year"),
+        orginMore250: _useTextTranslator("محصول", "orgin"),
+        notFound: _useTextTranslator("یافت نشد", "noFound"),
+    }
+
     if (movieId && +movieId > 250) {
         return (
             <div className='rtl pt-[calc(var(--navbar-height)*1.5)]'>
@@ -27,8 +40,7 @@ const SingleMovie = () => {
                 <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
                     <MoviezueqBox>
                         <div className='text-center my-3'>
-                            ! فیلم هایی که با ID بزرگتر از 250 هستن رو به این صورت نمایش داده میشود چون توسط توسعه دهنده اصلی Api
-                            قرار داده نشدند و همه پراپرتی های مورد نیاز رو ندارند.
+                            {SingleMoviePagetext.IdMore250}
                             <hr />
                         </div>
                         {isLoading ? (
@@ -46,21 +58,21 @@ const SingleMovie = () => {
                                 </div>
                                 <div className='flex-1 flex flex-col justify-between'>
                                     <div className='flex items-center justify-between'>
-                                        <p>عنوان</p>
+                                        <p>{SingleMoviePagetext.titleMore250}</p>
                                         <span>{data.title}</span>
                                     </div>
                                     <div className='flex items-center justify-between'>
-                                        <p>سال</p>
+                                        <p>{SingleMoviePagetext.yearMore250}</p>
                                         <span>{data.year}</span>
                                     </div>
                                     <div className='flex items-center justify-between'>
-                                        <p>کشور</p>
+                                        <p>{SingleMoviePagetext.orginMore250}</p>
                                         <span>{data.country}</span>
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            "یافت نشد"
+                            SingleMoviePagetext.notFound
                         )}
                     </MoviezueqBox>
                 </div>

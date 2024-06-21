@@ -1,6 +1,7 @@
-import _formatImdbVotes from "../../../_utils/_formatImdbVotes"
+import _formatImdbVotes from "../../../_utils/_formatImdbVotes";
+import _useTextTranslator from "../../../_utils/_useTextTranslator";
 
-const ImdbSection = ({ imdb_rating, imdb_votes }:{ imdb_rating: string, imdb_votes: string }) => {
+const ImdbSection = ({ imdb_rating, imdb_votes }: { imdb_rating: string; imdb_votes: string }) => {
     return (
         <div className='text-center w-20 justify-self-end h-10'>
             <p>
@@ -9,7 +10,8 @@ const ImdbSection = ({ imdb_rating, imdb_votes }:{ imdb_rating: string, imdb_vot
             <div className='bg-added-schoolbus h-0.5 w-full'></div>
             <div className='flex flex-row-reverse justify-center 1'>
                 <span>{_formatImdbVotes(imdb_votes).number}</span>{" "}
-                <span className='mr-1.5'>{_formatImdbVotes(imdb_votes).prefix}</span>رای
+                <span className='mr-1.5'>{_formatImdbVotes(imdb_votes).prefix}</span>
+                {_useTextTranslator("رای", "vote")}
             </div>
         </div>
     )
