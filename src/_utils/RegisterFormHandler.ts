@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
+import useAuthenticationApi from "../Lib/axios/AuthenticationApi"
 import useAuthentication from "../Lib/zustand/authentication"
 import usePopUp from "../Lib/zustand/popup"
 
@@ -24,18 +25,7 @@ const RegisterFormHandler = () => {
     }
 
     const { mutate: _RegisterHandler } = useMutation({
-        mutationFn: async (data: RegisterFormInputs) => {
-            const response = await fetch("http://localhost:3000/api/moviesapi/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-            const result = await response.json()
-
-            return result
-        },
+        mutationFn: (data: RegisterFormInputs) => useAuthenticationApi<RegisterResponse>("POST", "/register", data),
         onSuccess: onRegister,
     })
 

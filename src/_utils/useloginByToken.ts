@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
+import useAuthenticationApi from "../Lib/axios/AuthenticationApi"
 import useAuthentication from "../Lib/zustand/authentication"
 
 const useloginByToken = (stopLoading: () => void) => {
@@ -9,10 +10,7 @@ const useloginByToken = (stopLoading: () => void) => {
 
     const { mutate } = useMutation({
         mutationFn: (token: LoginResponse["access_token"]) =>
-            fetch("http://localhost:3000/api/moviesapi/authentication", {
-                method: "POST",
-                body: JSON.stringify({ token: token }),
-            }).then(res => res.json()),
+            useAuthenticationApi<RegisterResponse>("POST", "/authentication", { token }),
         onSuccess: (response: RegisterResponse) => {
             stopLoading()
             localStorage.setItem("User", JSON.stringify(response))

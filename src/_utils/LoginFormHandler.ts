@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
+import useAuthenticationApi from "../Lib/axios/AuthenticationApi"
 import usePopUp from "../Lib/zustand/popup"
 import useloginByToken from "./useloginByToken"
 
@@ -16,18 +17,7 @@ const LoginFormHandler = () => {
     const _LoginHandler = useloginByToken(stopLoading)
 
     const { mutate: _GetToken } = useMutation({
-        mutationFn: async (data: LoginFormInputs) => {
-            const response = await fetch("http://localhost:3000/api/moviesapi/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-            const result = await response.json()
-
-            return result
-        },
+        mutationFn: (data: LoginFormInputs) => useAuthenticationApi<LoginResponse>("POST", "/login", data),
         onSuccess: ({ access_token }: LoginResponse) => {
             show("login")
             _LoginHandler(access_token)
