@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
+import _useTextTranslator from "../../../_utils/_useTextTranslator"
 import RegisterFormHandler from "../../../_utils/RegisterFormHandler"
 import usePasswordVisibilityToggle from "../../../_utils/usePasswordVisibilityToggle"
 import Loading from "../../../Components/Loading"
@@ -22,7 +23,7 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
             <div className='w-full flex flex-col gap-1'>
                 <input
                     type='text'
-                    placeholder='نام'
+                    placeholder={_useTextTranslator("نام", "Name")}
                     className='outline-none px-1.5 bg-transparent border-b border-b-added-slategray text-added-slategray focus:border-b-added-schoolbus focus:text-added-white transition-all duration-300 480:border-b-2 md:border-b-[3px]'
                     {...Form.register("name")}
                 />
@@ -31,7 +32,7 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
             <div className='w-full flex flex-col gap-1 relative'>
                 <input
                     type={inputType}
-                    placeholder='گذرواژه'
+                    placeholder={_useTextTranslator("گذرواژه", "Password")}
                     className='outline-none px-1.5 bg-transparent border-b border-b-added-slategray text-added-slategray focus:border-b-added-schoolbus focus:text-added-white transition-all duration-300 480:border-b-2 md:border-b-[3px] pl-5 480:pl-6 sm:pl-7 md:pl-8 lg:pl-9 placeholder:text-base placeholder:480:text-xl placeholder:sm:text-2xl placeholder:md:text-3xl placeholder:lg:text-4xl placeholder:font-FaFont font-EnFont h-6 480:h-7 sm:h-8 md:h-9 lg:h-10 text-xs 480:text-sm sm:text-base md:text-lg lg:text-2xl'
                     {...Form.register("password")}
                 />
@@ -41,7 +42,7 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
             <div className='w-full flex flex-col gap-1'>
                 <input
                     type='text'
-                    placeholder='پست الکترونیکی'
+                    placeholder={_useTextTranslator("پست الکترونیکی", "Email")}
                     className='outline-none px-1.5 bg-transparent border-b border-b-added-slategray text-added-slategray focus:border-b-added-schoolbus focus:text-added-white transition-all duration-300 480:border-b-2 md:border-b-[3px] placeholder:text-base placeholder:480:text-xl placeholder:sm:text-2xl placeholder:md:text-3xl placeholder:lg:text-4xl placeholder:font-FaFont font-EnFont h-6 480:h-7 sm:h-8 md:h-9 lg:h-10 text-xs 480:text-sm sm:text-base md:text-lg lg:text-2xl'
                     {...Form.register("email")}
                 />

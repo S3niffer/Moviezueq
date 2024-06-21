@@ -1,3 +1,4 @@
+import _useTextTranslator from "../../_utils/_useTextTranslator"
 import useAuthentication from "../../Lib/zustand/authentication"
 import Logo from "../Logo"
 import LanguageSelector from "./LanguageSelector"
@@ -22,7 +23,7 @@ const Navbar = () => {
         return (
             <div className='bg-added-oxfordblue h-navBarHeight fixed left-0 right-0 top-0 z-50 shadow shadow-added-charcoal'>
                 <nav className='container py-1 flex items-center justify-between 480:py-1.5 sm:py-2.5 h-full '>
-                    <div className='w-1/3'>خوش آمدید</div>
+                    <div className='w-1/3'>{_useTextTranslator("خوش آمدید", "Welcome")}</div>
                     <Logo className='w-1/4 text-center' />
                     <LanguageSelector className='w-1/3 text-end mb-1 480:mb-1.5 sm:mb-2' />
                 </nav>
