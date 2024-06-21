@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import getGenreIconSrc from "../../../_utils/getGenreIconSrc"
 import Loading from "../../../Components/Loading"
+import useLayoutDataApi from "../../../Lib/axios/LayoutDataApi"
 import useSelectGenre from "../../../Lib/zustand/genre"
 
 const GenreBox = ({ name, id }: GenreBoxProps) => {
@@ -38,7 +39,7 @@ const GenreBox = ({ name, id }: GenreBoxProps) => {
 const GenresContainer = () => {
     const { data: Gneres, isLoading } = useQuery<GenreBoxProps[]>({
         queryKey: ["genres"],
-        queryFn: () => fetch("https://moviesapi.ir/api/v1/genres").then(res => res.json()),
+        queryFn: () => useLayoutDataApi("GET", "/genres"),
     })
 
     if (isLoading) return <Loading />

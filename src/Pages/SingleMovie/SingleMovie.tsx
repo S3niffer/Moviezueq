@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Navbar from "../../Components/Layouts/Navbar"
 import Loading from "../../Components/Loading"
 import MoviezueqBox from "../../Components/MoviezueqBox"
+import useLayoutDataApi from "../../Lib/axios/LayoutDataApi"
 import getBgImageSrc from "../../_utils/getBgImageSrc"
 import BreadCrumb from "./Layouts/BreadCrumb"
 import DetailsSection from "./Layouts/DetailsSection"
@@ -15,7 +16,7 @@ const SingleMovie = () => {
 
     const { data, isLoading, error } = useQuery({
         queryKey: ["Movie", movieId],
-        queryFn: () => fetch(`https://moviesapi.ir/api/v1/movies/${movieId}`).then(res => res.json()),
+        queryFn: () => useLayoutDataApi("GET", `/movies/${movieId}`),
     })
 
     if (movieId && +movieId > 250) {

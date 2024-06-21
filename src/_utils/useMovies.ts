@@ -1,4 +1,5 @@
 import { InfiniteData, useInfiniteQuery, UseInfiniteQueryResult } from "@tanstack/react-query"
+import useLayoutDataApi from "../Lib/axios/LayoutDataApi"
 import useSelectGenre from "../Lib/zustand/genre"
 
 const useMovies = () => {
@@ -16,8 +17,7 @@ const useMovies = () => {
     if (Genre) {
         const FilltredByGenre = useInfiniteQuery<MovieListDB>({
             queryKey: ["Movies", Genre],
-            queryFn: ({ pageParam }) =>
-                fetch(`https://moviesapi.ir/api/v1/genres/${Genre}/movies?page=${pageParam}`).then(res => res.json()),
+            queryFn: ({ pageParam }) => useLayoutDataApi("GET", `/genres/${Genre}/movies`, { page: pageParam }),
             initialPageParam: 1,
             getNextPageParam: (lastPage, allPages) => {
                 const currentPageNumber = allPages.length
@@ -31,7 +31,7 @@ const useMovies = () => {
     } else {
         const AllMovies = useInfiniteQuery<MovieListDB>({
             queryKey: ["Movies"],
-            queryFn: ({ pageParam }) => fetch(`https://moviesapi.ir/api/v1/movies?page=${pageParam}`).then(res => res.json()),
+            queryFn: ({ pageParam }) => useLayoutDataApi("GET", "/movies", { page: pageParam }),
             initialPageParam: 1,
             getNextPageParam: (lastPage, allPages) => {
                 const currentPageNumber = allPages.length

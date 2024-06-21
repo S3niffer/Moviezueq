@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import useLayoutDataApi from "../Lib/axios/LayoutDataApi"
 
 const useSerach = () => {
     const Location = useLocation()
@@ -12,7 +13,7 @@ const useSerach = () => {
     const [result, setResult] = useState<MovieBoxProps[]>([])
 
     const { mutate, isPending, reset } = useMutation({
-        mutationFn: (value: string) => fetch(`https://moviesapi.ir/api/v1/movies?q=${value}`).then(res => res.json()),
+        mutationFn: (value: string) => useLayoutDataApi("GET", "/movies", { q: value }),
         onSuccess: response => {
             setResult(response.data)
         },
