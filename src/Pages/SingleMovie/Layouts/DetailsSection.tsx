@@ -1,5 +1,6 @@
 import _formatDuration from "../../../_utils/_formatDuration"
 import _subStringHandler from "../../../_utils/_subStringHandler"
+import _TranslateGenreNameToPersian from "../../../_utils/_TranslateGenreNameToPersian"
 
 const DetailsSection = ({ actors, country, director, genres, runtime, title, type, year }: DetailsSectionI) => {
     return (
@@ -27,7 +28,7 @@ const DetailsSection = ({ actors, country, director, genres, runtime, title, typ
                     <span className='mr-2 line-clamp-1'>
                         {genres.map((genre, index) => (
                             <span key={genre}>
-                                {genre} {index !== genres.length - 1 ? "," : null}
+                                {_TranslateGenreNameToPersian(genre)} {index !== genres.length - 1 ? "," : null}
                             </span>
                         ))}
                     </span>

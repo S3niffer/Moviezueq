@@ -1,6 +1,7 @@
 import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { Link } from "react-router-dom"
+import _TranslateGenreNameToPersian from "../../../_utils/_TranslateGenreNameToPersian"
 import useMovies from "../../../_utils/useMovies"
 import Loading from "../../../Components/Loading"
 
@@ -29,7 +30,7 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
                         <span className='pr-3 text-added-white'>
                             {genres.map((genre, index) => (
                                 <React.Fragment key={genre}>
-                                    <span>{genre}</span>
+                                    <span>{_TranslateGenreNameToPersian(genre)}</span>
                                     {genres.length !== index + 1 ? " ," : null}
                                 </React.Fragment>
                             ))}

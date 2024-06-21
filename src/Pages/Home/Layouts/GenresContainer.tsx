@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
+import _TranslateGenreNameToPersian from "../../../_utils/_TranslateGenreNameToPersian"
 import getGenreIconSrc from "../../../_utils/getGenreIconSrc"
 import Loading from "../../../Components/Loading"
 import useLayoutDataApi from "../../../Lib/axios/LayoutDataApi"
@@ -30,7 +31,7 @@ const GenreBox = ({ name, id }: GenreBoxProps) => {
                     selected === id ? "text-added-schoolbus" : ""
                 }`}
             >
-                {name}
+                {_TranslateGenreNameToPersian(name)}
             </span>
         </li>
     )
