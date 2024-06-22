@@ -26,6 +26,7 @@ const RootAttributeChanger = () => {
             root2.setAttribute("dir", Fa_attr["dir"])
             root2.setAttribute("class", Fa_attr["class"])
             root2.setAttribute("lang", Fa_attr["lang"])
+            root2.classList.remove("min-h-screen")
         } else {
             root.setAttribute("class", En_attr["class"])
             root.setAttribute("dir", En_attr["dir"])
@@ -33,6 +34,7 @@ const RootAttributeChanger = () => {
             root2.setAttribute("dir", En_attr["dir"])
             root2.setAttribute("class", En_attr["class"])
             root2.setAttribute("lang", En_attr["lang"])
+            root2.classList.remove("min-h-screen")
         }
     }, [lang])
 

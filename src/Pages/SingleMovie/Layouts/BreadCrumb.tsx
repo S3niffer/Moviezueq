@@ -14,7 +14,7 @@ const BreadCrumb = ({ movieId }: { movieId: string | undefined }) => {
                     >
                         {_useTextTranslator("همه فیلم ها", "All movies")}
                     </Link>
-                    <div className='w-10 aspect-square sm:w-12 md:w-14'>
+                    <div className='w-10 aspect-square sm:w-12 md:w-14 ltr:rotate-180'>
                         <img
                             src={breadCrumbIcon}
                             alt='flash icon'

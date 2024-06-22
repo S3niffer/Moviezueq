@@ -14,6 +14,7 @@ const SearchResultItems = ({ Movies }: { Movies: MovieBoxProps[] }) => {
             </div>
         )
     }
+
     return Movies.map(movie => (
         <Link
             key={movie.id}

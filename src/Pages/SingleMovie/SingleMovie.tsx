@@ -32,85 +32,82 @@ const SingleMovie = () => {
         notFound: _useTextTranslator("یافت نشد", "noFound"),
     }
 
-    if (movieId && +movieId > 250) {
-        return (
-            <div className='rtl pt-[calc(var(--navbar-height)*1.5)]'>
-                <Navbar />
-                <BreadCrumb movieId={movieId} />
-                <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
-                    <MoviezueqBox>
-                        <div className='text-center my-3'>
-                            {SingleMoviePagetext.IdMore250}
-                            <hr />
-                        </div>
-                        {isLoading ? (
-                            <Loading />
-                        ) : data ? (
-                            <div className='flex gap-3 items-stretch'>
-                                <div className='flex justify-center'>
-                                    <div className='w-32 480:w-36 sm:w-44 aspect-[2/3] outline overflow-hidden outline-added-slategray schoolbus rounded md:w-52 lg:w-72'>
-                                        <img
-                                            src={noImageFound}
-                                            alt={`${data.title} movie poster`}
-                                            className='w-full h-full'
-                                        />
-                                    </div>
-                                </div>
-                                <div className='flex-1 flex flex-col justify-between'>
-                                    <div className='flex items-center justify-between'>
-                                        <p>{SingleMoviePagetext.titleMore250}</p>
-                                        <span>{data.title}</span>
-                                    </div>
-                                    <div className='flex items-center justify-between'>
-                                        <p>{SingleMoviePagetext.yearMore250}</p>
-                                        <span>{data.year}</span>
-                                    </div>
-                                    <div className='flex items-center justify-between'>
-                                        <p>{SingleMoviePagetext.orginMore250}</p>
-                                        <span>{data.country}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ) : (
-                            SingleMoviePagetext.notFound
-                        )}
-                    </MoviezueqBox>
-                </div>
-            </div>
-        )
-    }
-
     const BackgroundImageUrl = getBgImageSrc(data, isLoading)
 
     return (
-        <div className='rtl pt-[calc(var(--navbar-height)*1.5)]'>
+        <div className='rtl:rtl pt-[calc(var(--navbar-height)*1.5)]'>
             <Navbar />
             <BreadCrumb movieId={movieId} />
-
-            <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
-                <MoviezueqBox>
-                    {isLoading || !data ? (
-                        <Loading />
-                    ) : error ? (
-                        <div>{error.message}</div>
-                    ) : (
-                        <div
-                            className='bg-center bg-cover bg-no-repeat rounded-md overflow-hidden'
-                            style={{ backgroundImage: `url(${BackgroundImageUrl})` }}
-                        >
-                            <div className='bg-black/40 p-2 480:p-2.5 sm:p-3 md:p-3.5 lg:p-4 flex flex-col gap-2 md:flex-row md:gap-4'>
-                                <Poster {...data} />
-
-                                <div className='grid w-full '>
-                                    <ImdbSection {...data} />
-
-                                    <DetailsSection {...data} />
-                                </div>
+            {movieId && +movieId > 250 ? (
+                <>
+                    <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
+                        <MoviezueqBox>
+                            <div className='my-3 text-justify'>
+                                {SingleMoviePagetext.IdMore250}
+                                <hr className='my-3 pb-2' />
                             </div>
-                        </div>
-                    )}
-                </MoviezueqBox>
-            </div>
+                            {isLoading ? (
+                                <Loading />
+                            ) : data ? (
+                                <div className='flex gap-3 items-stretch'>
+                                    <div className='flex justify-center'>
+                                        <div className='w-32 480:w-36 sm:w-44 aspect-[2/3] outline overflow-hidden outline-added-slategray schoolbus rounded md:w-52 lg:w-72'>
+                                            <img
+                                                src={noImageFound}
+                                                alt={`${data.title} movie poster`}
+                                                className='w-full h-full'
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='flex-1 flex flex-col justify-between'>
+                                        <div className='flex items-center justify-between'>
+                                            <p>{SingleMoviePagetext.titleMore250}</p>
+                                            <span>{data.title}</span>
+                                        </div>
+                                        <div className='flex items-center justify-between'>
+                                            <p>{SingleMoviePagetext.yearMore250}</p>
+                                            <span>{data.year}</span>
+                                        </div>
+                                        <div className='flex items-center justify-between'>
+                                            <p>{SingleMoviePagetext.orginMore250}</p>
+                                            <span>{data.country}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                SingleMoviePagetext.notFound
+                            )}
+                        </MoviezueqBox>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className='container pb-[var(--yellow-BG)] mt-[var(--navbar-height)]'>
+                        <MoviezueqBox>
+                            {isLoading || !data ? (
+                                <Loading />
+                            ) : error ? (
+                                <div>{error.message}</div>
+                            ) : (
+                                <div
+                                    className='bg-center bg-cover bg-no-repeat rounded-md overflow-hidden'
+                                    style={{ backgroundImage: `url(${BackgroundImageUrl})` }}
+                                >
+                                    <div className='bg-black/40 p-2 480:p-2.5 sm:p-3 md:p-3.5 lg:p-4 flex flex-col gap-2 md:flex-row md:gap-4'>
+                                        <Poster {...data} />
+
+                                        <div className='grid w-full '>
+                                            <ImdbSection {...data} />
+
+                                            <DetailsSection {...data} />
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </MoviezueqBox>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

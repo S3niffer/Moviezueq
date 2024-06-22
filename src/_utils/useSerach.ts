@@ -42,6 +42,7 @@ const useSerach = () => {
 
     useEffect(() => {
         setShowStatus(false)
+        setSerchvalue("")
     }, [Location])
 
     return { serchValue, setSerchvalue, showStatus, isPending, result }
