@@ -8,15 +8,15 @@ import Loading from "../../../Components/Loading"
 
 const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
     return (
-        <div className='bg-added-charcoal rounded-md p-1 480:p-1.5 sm:p-2 md:p-2.5 lg:p-3 flex w-full border border-added-slategray md:border-[3px] hover:border-added-white transition-colors'>
-            <div className='w-14 aspect-[2/3] outline overflow-hidden outline-added-slategray rounded 480:w-16 sm:w-24 md:w-28 lg:w-32'>
+        <div className='bg-added-charcoal rounded-md p-1 480:p-1.5 sm:p-2 md:p-2.5 lg:p-3 flex w-full border border-added-slategray md:border-[3px] hover:border-added-white transition-colors group'>
+            <div className='w-14 aspect-[2/3] outline overflow-hidden outline-added-slategray rounded 480:w-16 sm:w-24 md:w-28 lg:w-32 group-hover:outline-added-white'>
                 <img
                     src={poster}
                     alt={`${title} movie poster`}
                     className='w-full h-full'
                 />
             </div>
-            <div className='mr-2 flex-1 480:mr-2.5 sm:mr-3 md:mr-3.5 lg:mr-4 flex flex-col justify-between'>
+            <div className='flex-1 rtl:mr-2 rtl:480:mr-2.5 rtl:sm:mr-3 rtl:md:mr-3.5 rtl:lg:mr-4 ltr:ml-2 ltr:480:ml-2.5 ltr:sm:ml-3 ltr:md:ml-3.5 ltr:lg:ml-4 flex flex-col justify-between'>
                 <div className=' flex-1 flex flex-col justify-evenly'>
                     <p>
                         {_useTextTranslator("عنوان", "Title")}:{" "}
@@ -40,7 +40,7 @@ const MovieBox = ({ genres, id, poster, title }: MovieBoxProps) => {
                 </div>
                 <div className='flex justify-end w-full '>
                     <Link to={`/movie/${id}`}>
-                        <button className='bg-added-slategray rounded text-xs leading-[0.1rem] border border-added-slategray hover:border-added-schoolbus transition-all duration-300 hover:pl-4 py-1.5 px-1 480:text-base 480:leading-[0.3rem] sm:text-lg sm:leading-[0.7rem] md:text-xl md:leading-4 lg:text-2xl lg:leading-5 lg:border-[3px]'>
+                        <button className='bg-added-slategray rounded text-xs leading-[0.1rem] border border-added-slategray hover:border-added-schoolbus transition-all duration-300 rtl:hover:pl-4 ltr:hover:pr-4 py-1.5 px-1 480:text-base 480:leading-[0.3rem] sm:text-lg sm:leading-[0.7rem] md:text-xl md:leading-4 lg:text-2xl lg:leading-5 lg:border-[3px]'>
                             {_useTextTranslator("بیشتر", "more")}...
                         </button>
                     </Link>

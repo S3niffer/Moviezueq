@@ -27,7 +27,7 @@ const GenreBox = ({ name, id }: GenreBoxProps) => {
                 className='w-3 480:w-4 sm:w-5 md:w-6 lg:w-7'
             />
             <span
-                className={`inline-block group-hover:-translate-x-2 480:group-hover:-translate-x-3 sm:group-hover:-translate-x-4 md:group-hover:-translate-x-5 lg:group-hover:-translate-x-6 transition-transform duration-500 ${
+                className={`inline-block rtl:group-hover:-translate-x-2 rtl:480:group-hover:-translate-x-3 rtl:sm:group-hover:-translate-x-4 rtl:md:group-hover:-translate-x-5 rtl:lg:group-hover:-translate-x-6 ltr:group-hover:translate-x-2 ltr:480:group-hover:translate-x-3 ltr:sm:group-hover:translate-x-4 ltr:md:group-hover:translate-x-5 ltr:lg:group-hover:translate-x-6 transition-transform duration-500 ${
                     selected === id ? "text-added-schoolbus" : ""
                 }`}
             >

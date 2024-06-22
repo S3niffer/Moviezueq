@@ -28,7 +28,7 @@ const Popup = () => {
 
     return (
         <Portal>
-            <div className='fixed top-[calc(var(--navbar-height)*1.2)] right-[calc(var(--navbar-height)*1.2)] z-40 font-FaFont text-added-white 480:text-xl sm:text-2xl md:text-3xl lg:text-4xl rtl'>
+            <div className='fixed top-[calc(var(--navbar-height)*1.2)] rtl:right-[calc(var(--navbar-height)*1.2)] ltr:left-[calc(var(--navbar-height)*1.2)] z-40 font-FaFont rtl:text-added-white rtl:480:text-xl rtl:sm:text-2xl rtl:md:text-3xl rtl:lg:text-4xl rtl:rtl ltr:ltr rtl:font-FaFont ltr:font-EnFont'>
                 <MoviezueqBox>
                     <div className='flex items-center gap-2 border-b border-green-600 md:border-b-2'>
                         <img

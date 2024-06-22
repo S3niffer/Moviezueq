@@ -8,7 +8,7 @@ import UserInfo from "./Layouts/UserInfo"
 
 const Home = () => {
     return (
-        <div className='rtl pt-[calc(var(--navbar-height)*1.5)]'>
+        <div className='rtl:rtl pt-[calc(var(--navbar-height)*1.5)]'>
             <Navbar />
             <UserInfo />
             <main className='mt-[var(--navbar-height)] container pb-[var(--yellow-BG)]'>

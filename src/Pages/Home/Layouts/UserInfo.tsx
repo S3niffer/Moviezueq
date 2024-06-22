@@ -10,10 +10,10 @@ const UserInfo = () => {
         <section className='container'>
             <MoviezueqBox>
                 <h4 className='text-center'>
-                    {_useTextTranslator("شما با این اطلاعات وارد شده اید", "you logged in with these information")}
+                    {_useTextTranslator("شما با این اطلاعات وارد شده اید", "You logged in with these information")}
                 </h4>
                 <div className='flex items-center justify-between'>
-                    <div>
+                    <div className='ltr:flex ltr:flex-col ltr:gap-1 ltr:480:gap-1.5 ltr:sm:gap-2 ltr:md:gap-2.5 ltr:lg:gap-3'>
                         <div className='flex gap-2 items-center 480:gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4'>
                             <p className='border-b border-added-schoolbus'>{_useTextTranslator("نام", "Name")} :</p>{" "}
                             <span className='text-added-slategray'>{name}</span>
