@@ -12,7 +12,7 @@ const RootAttributeChanger = () => {
         }
         const En_attr = {
             class: "font-En_Font text-xs 480:text-sm sm:text-base md:text-lg lg:text-2xl ltr text-added-white bg-added-delftblue min-h-screen",
-            dir: "lrt",
+            dir: "ltr",
             lang: "en",
         }
 
