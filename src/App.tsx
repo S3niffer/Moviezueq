@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import RoutesHandler from "./Router"
 import Popup from "./Components/Layouts/Popup"
+import RootAttributeChanger from "./_utils/RootAttributeChanger"
 
 function App() {
     const MoviezueqClient = new QueryClient({
@@ -15,10 +16,12 @@ function App() {
             },
         },
     })
+
     return (
         <QueryClientProvider client={MoviezueqClient}>
             {<RoutesHandler />}
             <Popup />
+            <RootAttributeChanger />
         </QueryClientProvider>
     )
 }
