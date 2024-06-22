@@ -5,8 +5,8 @@ const LanguageSelector = ({ className }: { className?: string }) => {
     const { ChangeLanguage, lang } = useLanguage()
 
     return (
-        <div className={className + " relative"}>
-            <div className='absolute -top-2 left-0 border-2 z-50 border-added-charcoal rounded px-1 text-xs cursor-pointer hover:border-added-slategray bg-added-oxfordblue group flex flex-col transition-all duration-300 480:text-sm sm:text-base md:text-lg md:-top-3 lg:text-2xl'>
+        <div className={className + " relative "}>
+            <div className='absolute -top-2 rtl:left-0 border-2 z-50 border-added-charcoal rounded px-1 text-xs cursor-pointer hover:border-added-slategray bg-added-oxfordblue group flex flex-col transition-all duration-300 480:text-sm sm:text-base md:text-lg md:-top-3 lg:text-2xl ltr:right-0'>
                 <span>
                     <span className='font-FaFont'>انتخاب</span>
                     🌐

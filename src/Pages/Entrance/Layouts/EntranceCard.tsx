@@ -31,7 +31,7 @@ const EntranceCard = ({ cardName, cardClass, Form, formChanger }: EntranceCard) 
                     </>
                 ) : (
                     <>
-                        click to
+                        click to{" "}
                         <button
                             onClick={formChanger}
                             className='text-added-schoolbus '

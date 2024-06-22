@@ -11,7 +11,7 @@ const Entrance = () => {
         setFormName(prv => (prv === "login" ? "register" : "login"))
     }
     return (
-        <div className='rtl pt-[calc(var(--navbar-height)*2)]'>
+        <div className='rtl:rtl ltr:ltr pt-[calc(var(--navbar-height)*2)]'>
             <Navbar />
             <div className='container pb-[calc(var(--navbar-height)+var(--yellow-BG))] bg-added-delftblue'>
                 <div className='sticky z-10 entranceCardContainer flex justify-center'>

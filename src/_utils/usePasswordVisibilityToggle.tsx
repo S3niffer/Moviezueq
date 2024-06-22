@@ -9,7 +9,7 @@ const usePasswordVisibilityToggle = () => {
             viewBox='0 0 24 30'
             x='0px'
             y='0px'
-            className='w-4 480:w-5 sm:w-7 sm:top-0.5 md:w-[30px] lg:w-[34px] hover:-translate-y-0.5 transition-transform fill-added-slategray absolute top-1 left-0 cursor-pointer'
+            className='w-4 480:w-5 sm:w-7 sm:top-0.5 md:w-[30px] lg:w-[34px] hover:-translate-y-0.5 transition-transform fill-added-slategray absolute top-1 rtl:left-0 ltr:right-0 cursor-pointer'
             onClick={() => setVisibility(true)}
         >
             <path d='M12,4.5h0c-3.961,0-7.666,2.573-10.43,7.245a.5.5,0,0,0,0,.51C4.334,16.927,8.039,19.5,12,19.5s7.666-2.573,10.431-7.245a.506.506,0,0,0,0-.51C19.666,7.073,15.962,4.5,12,4.5Zm0,14c-3.523,0-6.858-2.306-9.417-6.5C5.142,7.806,8.477,5.5,12,5.5s6.858,2.306,9.417,6.5C18.858,16.194,15.523,18.5,12,18.5Zm0-10A3.5,3.5,0,1,0,15.5,12,3.5,3.5,0,0,0,12,8.5Zm0,6A2.5,2.5,0,1,1,14.5,12,2.5,2.5,0,0,1,12,14.5Z' />
@@ -22,7 +22,7 @@ const usePasswordVisibilityToggle = () => {
             viewBox='0 0 64 80'
             x='0px'
             y='0px'
-            className='w-4 480:w-5 sm:w-7 sm:top-0.5 md:w-[30px] lg:w-[34px] hover:-translate-y-0.5 transition-transform fill-added-slategray absolute top-1 left-0 cursor-pointer'
+            className='w-4 480:w-5 sm:w-7 sm:top-0.5 md:w-[30px] lg:w-[34px] hover:-translate-y-0.5 transition-transform fill-added-slategray absolute top-1 rtl:left-0 ltr:right-0 cursor-pointer'
             onClick={() => setVisibility(false)}
         >
             <title>1</title>
