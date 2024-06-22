@@ -35,7 +35,7 @@ const SearchResultItems = ({ Movies }: { Movies: MovieBoxProps[] }) => {
 const SerachResultBox = ({ children }: { children: React.ReactNode }) => {
     return (
         <Portal>
-            <div className='fixed z-40 top-[var(--navbar-height)] w-screen'>
+            <div className='fixed z-20 top-[var(--navbar-height)] w-screen'>
                 <div className='container rtl:rtl ltr:ltr flex justify-between text-added-white'>
                     <div className='w-1/5'></div>
                     <div className='w-3/6 rtl:pr-1 ltr:pl-1'>
