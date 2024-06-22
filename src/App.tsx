@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import RoutesHandler from "./Router"
 import Popup from "./Components/Layouts/Popup"
+import RoutesHandler from "./Router"
 import RootAttributeChanger from "./_utils/RootAttributeChanger"
 
 function App() {
