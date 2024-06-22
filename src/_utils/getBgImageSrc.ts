@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 type ImagesT = Pick<SingleMovieDetails, "images">
 
 const getBgImageSrc = (Movie: ImagesT = { images: [""] }, status: boolean) => {
+    if (!("images" in Movie)) Movie = { images: [""] }
     const [{ src }, setImageSrc] = useState({ src: Movie.images[0], index: 0 })
 
     useEffect(() => {
