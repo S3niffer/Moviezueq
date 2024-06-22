@@ -52,7 +52,7 @@ const SerachResultBox = ({ children }: { children: React.ReactNode }) => {
 }
 
 const SearchMovieInput = () => {
-    const { serchValue, setSerchvalue, showStatus, isPending, result } = useSerach()
+    const { serchValue, setSerchvalue, showStatus, isPending, result, input_ref } = useSerach()
 
     return (
         <>
@@ -63,6 +63,7 @@ const SearchMovieInput = () => {
                     placeholder={_useTextTranslator("دنبال چی میگردی؟", "what do u looking for?")}
                     value={serchValue}
                     onChange={e => setSerchvalue(e.target.value)}
+                    ref={input_ref}
                 />
                 <img
                     src={searchIcon}

@@ -1,9 +1,11 @@
 import { useMutation } from "@tanstack/react-query"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useLocation } from "react-router-dom"
 import useLayoutDataApi from "../Lib/axios/LayoutDataApi"
 
 const useSerach = () => {
+    const input_ref = useRef<HTMLInputElement>(null)
+
     const Location = useLocation()
 
     const [showStatus, setShowStatus] = useState<boolean>(false)
@@ -20,10 +22,28 @@ const useSerach = () => {
     })
 
     useEffect(() => {
+        const _blur_handler = () => {
+            setShowStatus(false)
+        }
+
+        const _focus_handler = () => {
+            setShowStatus(true)
+        }
+
         if (serchValue) {
             setShowStatus(true)
+
+            if (input_ref.current) {
+                input_ref.current.addEventListener("blur", _blur_handler)
+                input_ref.current.addEventListener("focus", _focus_handler)
+            }
         } else {
             setShowStatus(false)
+
+            if (input_ref.current) {
+                input_ref.current.removeEventListener("blur", _blur_handler)
+                input_ref.current.removeEventListener("focus", _focus_handler)
+            }
         }
 
         const handler = setTimeout(() => {
@@ -37,6 +57,11 @@ const useSerach = () => {
 
         return () => {
             clearTimeout(handler)
+
+            if (input_ref.current) {
+                input_ref.current.removeEventListener("blur", _blur_handler)
+                input_ref.current.removeEventListener("focus", _focus_handler)
+            }
         }
     }, [serchValue])
 
@@ -45,6 +70,6 @@ const useSerach = () => {
         setSerchvalue("")
     }, [Location])
 
-    return { serchValue, setSerchvalue, showStatus, isPending, result }
+    return { serchValue, setSerchvalue, showStatus, isPending, result, input_ref }
 }
 export default useSerach
