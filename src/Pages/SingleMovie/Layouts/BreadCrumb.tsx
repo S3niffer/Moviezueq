@@ -25,9 +25,10 @@ const BreadCrumb = ({ movieId }: { movieId: string | undefined }) => {
                         className='text-added-schoolbus'
                         aria-disabled
                     >
-                        {_useTextTranslator("فیلم شماره (", "Movie number (")}
+                        {_useTextTranslator("فیلم شماره", "Movie number")}
+                        {" ( "}
                         {movieId}
-                        {" )"}
+                        {" ) "}
                     </Link>
                 </div>
             </MoviezueqBox>
