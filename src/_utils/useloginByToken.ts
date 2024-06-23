@@ -24,14 +24,9 @@ const useloginByToken = (stopLoading: () => void) => {
         },
     })
 
-    const _loginHandler = (token?: LoginResponse["access_token"]) => {
-        const localToken: LoginResponse["access_token"] | null = localStorage.getItem("token")
-        if (token) {
-            localStorage.setItem("token", JSON.stringify(token))
-            mutate(token)
-        } else if (localToken) {
-            mutate(localToken)
-        } else return "bruh" // pop error
+    const _loginHandler = (token: LoginResponse["access_token"]) => {
+        localStorage.setItem("token", JSON.stringify(token))
+        mutate(token)
     }
 
     return _loginHandler
