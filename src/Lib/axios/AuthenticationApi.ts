@@ -1,20 +1,35 @@
-import axios, { Method } from "axios"
+import axios from "axios"
 
 const byPassCorsAxiosInstance = axios.create({
-    baseURL: "http://localhost:3000/api/moviesapi",
-    headers: {
-        "Content-Type": "application/json",
-    },
+    baseURL: "/auth",
 })
 
-const useAuthenticationApi = async <T = any>(method: Method, url: string, data?: any): Promise<T> => {
+export const useAuthGetToken = async <T extends LoginRequest>(method: T["method"], url: T["url"], data: T["data"]) => {
+    const { data: response } = await byPassCorsAxiosInstance({ method, url, data })
+
+    return response as T["response"]
+}
+
+export const useAuthRegisterUser = async <T extends RegisterRequest>(method: T["method"], url: T["url"], data: T["data"]) => {
+    const headers = { "Content-Type": "application/json" }
+    const { data: response } = await byPassCorsAxiosInstance({ method, url, data, headers })
+
+    return response as T["response"]
+}
+
+export const useAuthGetUserWithToken = async <T extends GetUserWithTokenRequest>(
+    method: T["method"],
+    url: T["url"],
+    token: T["token"]
+) => {
     const { data: response } = await byPassCorsAxiosInstance({
         method,
         url,
-        data,
+        headers: {
+            authorization: `Bearer ${token}`,
+            accept: "application/json",
+        },
     })
 
-    return response as T
+    return response as T["response"]
 }
-
-export default useAuthenticationApi

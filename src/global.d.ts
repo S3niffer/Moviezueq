@@ -25,6 +25,20 @@ interface RegisterResponse {
     updated_at: string
 }
 
+interface RegisterRequest {
+    method: "POST"
+    url: "/api/v1/register"
+    data: RegisterFormInputs
+    response: RegisterResponse
+}
+
+interface GetUserWithTokenRequest {
+    method: "GET"
+    url: "/api/user"
+    token: string
+    response: RegisterResponse
+}
+
 interface LoginFormInputs {
     email: string
     password: string
@@ -40,6 +54,13 @@ interface LoginResponse {
 interface LoginResponseError {
     error: string
     message: string
+}
+
+interface LoginRequest {
+    method: "POST"
+    url: "/oauth/token"
+    data: FormData
+    response: LoginResponse | LoginResponseError
 }
 
 interface GenreBoxProps {
