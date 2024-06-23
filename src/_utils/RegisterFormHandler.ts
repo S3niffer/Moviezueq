@@ -16,7 +16,7 @@ const RegisterFormHandler = () => {
     const Navigate = useNavigate()
 
     const onRegister = (response: RegisterResponse) => {
-        show("register")
+        show({ mode: "register" })
         setLoadingStatus(false)
         localStorage.setItem("User", JSON.stringify(response))
         setUser(response)

@@ -37,6 +37,11 @@ interface LoginResponse {
     refresh_token: string
 }
 
+interface LoginResponseError {
+    error: string
+    message: string
+}
+
 interface GenreBoxProps {
     id: number
     name: string
@@ -94,11 +99,11 @@ interface DetailsSectionI {
     actors: string
 }
 
-interface popUpStore {
+type popUpStore = {
     status: boolean
-    value: "login" | "register"
-    show: (value: popUpStore["value"]) => void
     close: () => void
+    show: (value: popUpStore["value"]) => void
+    value: { mode: "login" | "register"; message?: undefined } | { mode: "error"; message: string }
 }
 
 interface genreStore {

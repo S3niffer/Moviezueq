@@ -7,6 +7,9 @@ import tickIcon from "/Pics/tick.png"
 
 const Popup = () => {
     const { close, value, status } = usePopUp()
+
+    const { mode, message } = value
+
     const lang = useLanguage(store => store.lang)
 
     useEffect(() => {
@@ -37,16 +40,18 @@ const Popup = () => {
                             className='w-5 aspect-square 480:w-6 sm:w-7 md:w-8 lg:w-9'
                         />
                         <span>
-                            {lang === "FA" ? (
+                            {mode === "error" ? (
+                                message
+                            ) : lang === "FA" ? (
                                 <>
                                     با موفقیت
-                                    {value === "login" ? loginText : value === "register" ? registerText : "BRUH(error)"}
+                                    {mode === "login" ? loginText : registerText}
                                     شدید
                                 </>
                             ) : (
                                 <>
                                     You have successfully
-                                    {value === "login" ? " logged in " : value === "register" ? " registered " : " BRUH(error) "}
+                                    {mode === "login" ? " logged in " : " registered "}
                                 </>
                             )}
                         </span>

@@ -16,7 +16,7 @@ const useloginByToken = (stopLoading: () => void) => {
             useAuthenticationApi<RegisterResponse>("POST", "/authentication", { token }),
         onSuccess: (response: RegisterResponse) => {
             stopLoading()
-            show("login")
+            show({ mode: "login" })
             localStorage.setItem("User", JSON.stringify(response))
             setUser(response)
 

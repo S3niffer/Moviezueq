@@ -2,9 +2,9 @@ import { create } from "zustand"
 
 const usePopUp = create<popUpStore>(set => ({
     status: false,
-    value: "login",
-    show: value => set(store => ({ ...store, status: true, value })),
-    close: () => set(store => ({ ...store, status: false })),
+    value: { mode: "login" },
+    close: () => set({ status: false }),
+    show: value => set({ value: value, status: true }),
 }))
 
 export default usePopUp
