@@ -6,6 +6,8 @@ import useLayoutDataApi from "../Lib/axios/LayoutDataApi"
 const useSerach = () => {
     const input_ref = useRef<HTMLInputElement>(null)
 
+    const _blur_timeOut = useRef<number | null>(null)
+
     const Location = useLocation()
 
     const [showStatus, setShowStatus] = useState<boolean>(false)
@@ -23,10 +25,16 @@ const useSerach = () => {
 
     useEffect(() => {
         const _blur_handler = () => {
-            setShowStatus(false)
+            _blur_timeOut.current = setTimeout(() => {
+                setShowStatus(false)
+            }, 200)
         }
 
         const _focus_handler = () => {
+            if (_blur_timeOut.current !== null) {
+                clearTimeout(_blur_timeOut.current)
+            }
+
             setShowStatus(true)
         }
 
@@ -57,6 +65,10 @@ const useSerach = () => {
 
         return () => {
             clearTimeout(handler)
+
+            if (_blur_timeOut.current !== null) {
+                clearTimeout(_blur_timeOut.current)
+            }
 
             if (input_ref.current) {
                 input_ref.current.removeEventListener("blur", _blur_handler)

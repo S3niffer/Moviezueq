@@ -59,7 +59,7 @@ const SearchMovieInput = () => {
             <div className='rtl:mr-auto ltr:ml-auto flex items-center justify-start relative border-2 border-added-charcoal rounded-md outline-none has-[input:focus]:border-added-slategray'>
                 <input
                     type='text'
-                    className='bg-transparent outline-none h-7 sm:h-8 md:h-9 lg:h-10 placeholder:text-added-charcoal w-[88%] rtl:pr-1 ltr:pl-1 focus:placeholder:text-added-slategray rtl:480:pr-1.5 rtl:sm:pr-2 rtl:md:pr-2.5 ltr:480:pl-1.5 ltr:sm:pl-2 ltr:md:pl-2.5 rtl:rtl ltr:ltr'
+                    className='bg-transparent outline-none placeholder:text-added-charcoal w-[88%] rtl:pr-1 ltr:pl-1 focus:placeholder:text-added-slategray rtl:480:pr-1.5 rtl:sm:pr-2 rtl:md:pr-2.5 ltr:480:pl-1.5 ltr:sm:pl-2 ltr:md:pl-2.5 rtl:rtl ltr:ltr ltr:py-1 ltr:md:py-1.5'
                     placeholder={_useTextTranslator("دنبال چی میگردی؟", "what do u looking for?")}
                     value={serchValue}
                     onChange={e => setSerchvalue(e.target.value)}
