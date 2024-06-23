@@ -48,8 +48,11 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
                     onChange={e => {
                         Form.register("email").onChange(e)
 
-                        if (!e.target.value) return
-                        e.target.classList.add("rtl:ltr")
+                        if (e.target.value) {
+                            e.target.classList.add("rtl:ltr")
+                        } else {
+                            e.target.classList.remove("rtl:ltr")
+                        }
                     }}
                     onBlur={e => {
                         Form.register("email").onBlur(e)
