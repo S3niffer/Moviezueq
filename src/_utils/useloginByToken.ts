@@ -2,17 +2,21 @@ import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
 import useAuthenticationApi from "../Lib/axios/AuthenticationApi"
 import useAuthentication from "../Lib/zustand/authentication"
+import usePopUp from "../Lib/zustand/popup"
 
 const useloginByToken = (stopLoading: () => void) => {
     const Navigate = useNavigate()
 
     const setUser = useAuthentication(store => store.setUser)
 
+    const show = usePopUp(store => store.show)
+
     const { mutate } = useMutation({
         mutationFn: (token: LoginResponse["access_token"]) =>
             useAuthenticationApi<RegisterResponse>("POST", "/authentication", { token }),
         onSuccess: (response: RegisterResponse) => {
             stopLoading()
+            show("login")
             localStorage.setItem("User", JSON.stringify(response))
             setUser(response)
 
