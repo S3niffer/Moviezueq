@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
-import useAuthenticationApi from "../Lib/axios/AuthenticationApi"
+import { useAuthRegisterUser } from "../Lib/axios/AuthenticationApi"
 import useAuthentication from "../Lib/zustand/authentication"
 import usePopUp from "../Lib/zustand/popup"
 
@@ -25,7 +25,7 @@ const RegisterFormHandler = () => {
     }
 
     const { mutate: _RegisterHandler } = useMutation({
-        mutationFn: (data: RegisterFormInputs) => useAuthenticationApi<RegisterResponse>("POST", "/register", data),
+        mutationFn: (data: RegisterFormInputs) => useAuthRegisterUser("POST", "/api/v1/register", data),
         onSuccess: onRegister,
     })
 
