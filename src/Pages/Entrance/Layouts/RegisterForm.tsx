@@ -45,6 +45,18 @@ const RegisterForm = ({ buttonValue }: EntranceFormProps) => {
                     placeholder={_useTextTranslator("پست الکترونیکی", "Email")}
                     className='outline-none px-1.5 bg-transparent border-b border-b-added-slategray text-added-slategray focus:border-b-added-schoolbus focus:text-added-white transition-all duration-300 480:border-b-2 md:border-b-[3px] placeholder:text-base placeholder:480:text-xl placeholder:sm:text-2xl placeholder:md:text-3xl placeholder:lg:text-4xl placeholder:font-FaFont font-EnFont h-6 480:h-7 sm:h-8 md:h-9 lg:h-10 text-xs 480:text-sm sm:text-base md:text-lg lg:text-2xl'
                     {...Form.register("email")}
+                    onChange={e => {
+                        Form.register("email").onChange(e)
+
+                        if (!e.target.value) return
+                        e.target.classList.add("rtl:ltr")
+                    }}
+                    onBlur={e => {
+                        Form.register("email").onBlur(e)
+
+                        if (e.target.value) return
+                        e.target.classList.remove("rtl:ltr")
+                    }}
                 />
                 <FieldErrorMessage Field={Form.formState.errors.email} />
             </div>
