@@ -22,8 +22,10 @@ const LoginFormHandler = () => {
             if ("access_token" in response) {
                 _LoginHandler(response.access_token)
             }
+
             if ("error" in response) {
                 show({ mode: "error", message: response.message })
+                stopLoading()
             }
         },
     })
