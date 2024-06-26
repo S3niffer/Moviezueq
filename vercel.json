@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+        {
+            "source": "/auth/:path*",
+            "destination": "https://moviesapi.ir/:path*"
+        }
+    ],
+    "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }]
+}
