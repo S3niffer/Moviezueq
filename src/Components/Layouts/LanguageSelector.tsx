@@ -1,6 +1,6 @@
 import useLanguage from "../../Lib/zustand/language"
-import americaFlag from "/Pics/Flags icon/america.png"
-import iranFlag from "/Pics/Flags icon/iran.png"
+import americaFlag from "/Pics/Flags_icon/america.png"
+import iranFlag from "/Pics/Flags_icon/iran.png"
 const LanguageSelector = ({ className }: { className?: string }) => {
     const { ChangeLanguage, lang } = useLanguage()
 
